@@ -10,11 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Icons } from "./Icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useToast } from "./ui/use-toast";
 
 function Login() {
   const auth = getAuth(db.app);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { toast } = useToast();
 
   const handleSubmit = async (values: FormikValues) => {
     setLoading(true);
@@ -24,13 +26,14 @@ function Login() {
         values.email,
         values.password
       ).then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("user", user);
         router.push("/dashboard");
       });
-    } catch (error) {
-      alert(error);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error?.message,
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
