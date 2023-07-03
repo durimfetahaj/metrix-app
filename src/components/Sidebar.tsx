@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Icons } from "./Icons";
 import Link from "next/link";
