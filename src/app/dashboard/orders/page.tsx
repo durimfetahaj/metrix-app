@@ -4,7 +4,7 @@ const page: FC = () => {
   return (
     <div className="h-screen w-full flex items-center justify-center bg-brand-background">
       <div>
-        <p>Dashboard</p>
+        <p>Orders</p>
       </div>
     </div>
   );
