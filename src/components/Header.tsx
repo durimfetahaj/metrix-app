@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { signOut } from "next-auth/react";
+import { signOut, signIn } from "next-auth/react";
 import { Icons } from "./Icons";
 import { usePathname } from "next/navigation";
 import { getTitle } from "@/utils/functions";
@@ -21,7 +21,7 @@ function Header({ isHomepage = false }: Props) {
       {status === "authenticated" ? (
         <Button onClick={() => signOut()}>Log out</Button>
       ) : (
-        <Link href="/login">Sign In</Link>
+        <Button onClick={() => signIn()}>Sign In</Button>
       )}
     </div>
   );
