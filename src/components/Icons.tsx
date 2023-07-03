@@ -1,4 +1,15 @@
-import { LucideProps, MessageSquare, User } from "lucide-react";
+import {
+  LucideProps,
+  User,
+  LayoutDashboard,
+  ShoppingBag,
+  Users,
+  FolderMinus,
+  MessageCircle,
+  Settings,
+  ArrowRightToLine,
+  ArrowLeftFromLine,
+} from "lucide-react";
 
 export const Icons = {
   user: User,
@@ -22,5 +33,15 @@ export const Icons = {
       />
     </svg>
   ),
-  commentReply: MessageSquare,
+
+  sidebar: {
+    dashboard: (props: LucideProps) => <LayoutDashboard {...props} />,
+    orders: (props: LucideProps) => <ShoppingBag {...props} />,
+    customers: (props: LucideProps) => <Users {...props} />,
+    inventory: (props: LucideProps) => <FolderMinus {...props} />,
+    conversations: (props: LucideProps) => <MessageCircle {...props} />,
+    settings: (props: LucideProps) => <Settings {...props} />,
+    open: (props: LucideProps) => <ArrowRightToLine {...props} />,
+    close: (props: LucideProps) => <ArrowLeftFromLine {...props} />,
+  },
 };
