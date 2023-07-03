@@ -13,10 +13,11 @@ type Props = { isHomepage?: boolean };
 
 function Header({ isHomepage = false }: Props) {
   const { data: session, status } = useSession();
+  const pageTitle = getTitle(usePathname());
 
   return (
     <div className="flex items-center justify-between h-[80px] w-full  py-3 px-3  bg-white">
-      {isHomepage ? <Icons.logo /> : <p>{getTitle(usePathname())}</p>}
+      {isHomepage ? <Icons.logo /> : <p>{pageTitle}</p>}
       {status === "authenticated" ? (
         <Button onClick={() => signOut()}>Log out</Button>
       ) : (
