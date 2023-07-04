@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import UserAuthForm from "./UserAuthForm";
-import { loginValidationSchema } from "@/lib/validators";
+import { loginValidationSchema } from "@/utils/validators";
 import { FormikValues } from "formik";
 import { Input } from "@/components/ui/input";
 import { Icons } from "./Icons";
@@ -65,19 +65,20 @@ function Login() {
         <div className="flex flex-col w-full text-right">
           <Input name="email" placeholder="E-mail" />
           <Input name="password" placeholder="Password" type="password" />
-          <Link
-            href="/reset-password"
-            className="text-brand-primary-100 text-sm"
-          >
-            Recover Password
-          </Link>
-          <Link
-            href="/register"
-            className="my-12 text-center text-brand-black-30 text-sm"
-          >
-            Don`t have an account?{" "}
-            <span className="text-brand-primary-100">Sign Up</span>
-          </Link>
+          <div>
+            <Link
+              href="/reset-password"
+              className="text-brand-primary-100 text-sm"
+            >
+              Recover Password
+            </Link>
+          </div>
+          <div className="flex items-center justify-center gap-1 my-10 text-sm">
+            <p className="text-brand-black-30">Don't have an account?</p>
+            <Link href="/register" className=" text-brand-primary-100">
+              Sign Up
+            </Link>
+          </div>
         </div>
       </div>
     </UserAuthForm>

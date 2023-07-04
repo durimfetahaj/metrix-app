@@ -19,7 +19,7 @@ function UserAuthForm({
   submitText,
 }: Props) {
   return (
-    <div className="h-[600px] w-[400px] rounded-xl py-10 px-8  bg-white">
+    <div className="w-[400px] rounded-xl py-10 px-8  bg-white">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
