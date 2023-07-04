@@ -26,20 +26,15 @@ export const authOptions: NextAuthOptions = {
             password ?? ""
           );
 
-          console.log("user", userCredential.user.uid); // Add this line
-
           if (userCredential.user) {
-            // If the user is successfully authenticated, you can return the user object
             return {
               id: userCredential.user.uid,
               email: userCredential.user.email,
             };
           } else {
-            // If the authentication fails, return null
-            return null;
+            throw new Error("Invalid email or password");
           }
         } catch (error) {
-          // Handle any errors that occur during authentication
           throw new Error("Invalid email or password");
         }
       },
@@ -57,14 +52,9 @@ export const authOptions: NextAuthOptions = {
     async jwt({ user, token }) {
       return token;
     },
-
-    redirect() {
-      return "/dashboard";
-    },
   },
   pages: {
     signIn: "/login",
-    error: "/error",
   },
   session: {
     strategy: "jwt",

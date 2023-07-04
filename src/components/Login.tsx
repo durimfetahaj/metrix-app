@@ -23,6 +23,18 @@ function Login() {
       await signIn("credentials", {
         email: values?.email,
         password: values?.password,
+        redirect: false,
+      }).then((response) => {
+        if (!response?.error) {
+          router.push("/");
+        } else {
+          console.log(response?.error);
+          toast({
+            title: "Invalid Credentials",
+            description: response?.error,
+            variant: "destructive",
+          });
+        }
       });
     } catch (error: any) {
       toast({
@@ -43,6 +55,7 @@ function Login() {
       submitText="Login"
     >
       {loading && <Loader />}
+
       <div className="flex flex-col items-center h-full">
         <div className="flex flex-col items-center mb-16">
           <Icons.logo className="mb-8" />
@@ -50,17 +63,8 @@ function Login() {
           <p className="text-brand-black-30">Login to your account</p>
         </div>
         <div className="flex flex-col w-full text-right">
-          <Input
-            name="email"
-            placeholder="E-mail"
-            className="border-gray-100 bg-brand-background mb-8"
-          />
-          <Input
-            name="password"
-            placeholder="Password"
-            type="password"
-            className="border-gray-100 bg-brand-background mb-3"
-          />
+          <Input name="email" placeholder="E-mail" />
+          <Input name="password" placeholder="Password" type="password" />
           <Link
             href="/reset-password"
             className="text-brand-primary-100 text-sm"
