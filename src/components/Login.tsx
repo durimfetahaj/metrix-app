@@ -74,7 +74,7 @@ function Login() {
             </Link>
           </div>
           <div className="flex items-center justify-center gap-1 my-10 text-sm">
-            <p className="text-brand-black-30">Don't have an account?</p>
+            <p className="text-brand-black-30">Don`t have an account?</p>
             <Link href="/register" className=" text-brand-primary-100">
               Sign Up
             </Link>
