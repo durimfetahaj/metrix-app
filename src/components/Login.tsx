@@ -63,8 +63,12 @@ function Login() {
           <p className="text-brand-black-30">Login to your account</p>
         </div>
         <div className="flex flex-col w-full text-right">
-          <Input name="email" placeholder="E-mail" />
-          <Input name="password" placeholder="Password" type="password" />
+          <Input name="email" placeholder="E-mail: admin@admin.com" />
+          <Input
+            name="password"
+            placeholder="Password: 12345678"
+            type="password"
+          />
           <div>
             <Link
               href="/reset-password"
