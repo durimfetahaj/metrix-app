@@ -26,7 +26,7 @@ function Login() {
         redirect: false,
       }).then((response) => {
         if (!response?.error) {
-          router.push("/");
+          router.push("/dashboard");
         } else {
           console.log(response?.error);
           toast({
