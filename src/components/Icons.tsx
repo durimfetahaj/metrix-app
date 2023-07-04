@@ -63,6 +63,5 @@ export const Icons = {
       />
     </svg>
   ),
-
   plus: (props: LucideProps) => <Plus {...props} className="mr-1" />,
 };
