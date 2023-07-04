@@ -10,6 +10,7 @@ import {
   ArrowRightToLine,
   ArrowLeftFromLine,
   Loader2,
+  Plus,
 } from "lucide-react";
 
 export const Icons = {
@@ -62,4 +63,6 @@ export const Icons = {
       />
     </svg>
   ),
+
+  plus: (props: LucideProps) => <Plus {...props} className="mr-1" />,
 };

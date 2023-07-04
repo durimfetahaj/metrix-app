@@ -1,11 +1,8 @@
 import { FC } from "react";
+import Inventory from "@/components/Intentory";
 
 const page: FC = () => {
-  return (
-    <div className="">
-      <p>Dashboard</p>
-    </div>
-  );
+  return <Inventory />;
 };
 
 export default page;
