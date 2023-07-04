@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import UserAuthForm from "./UserAuthForm";
-import { loginValidationSchema } from "@/utils/validators";
+import { login } from "@/utils/validators";
 import { FormikValues } from "formik";
 import { Input } from "@/components/ui/input";
 import { Icons } from "./Icons";
@@ -49,7 +49,7 @@ function Login() {
 
   return (
     <UserAuthForm
-      validationSchema={loginValidationSchema}
+      validationSchema={login}
       initialValues={{ email: "", password: "" }}
       onSubmit={handleSubmit}
       submitText="Login"

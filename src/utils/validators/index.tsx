@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const loginValidationSchema = Yup.object().shape({
+export const login = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
@@ -9,7 +9,7 @@ export const loginValidationSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-export const registerValidationSchema = Yup.object().shape({
+export const register = Yup.object().shape({
   fullName: Yup.string()
     .min(3, "full name must be at least 3 characters")
     .required("Full name is required"),
@@ -21,9 +21,15 @@ export const registerValidationSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
+export const resetPassword = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+});
+
 // Export as many validation schemas as you need
 
-export const settingsAccountValidationSchema = Yup.object().shape({
+export const settingsAccount = Yup.object().shape({
   firstName: Yup.string()
     .min(3, "full name must be at least 3 characters")
     .required("Full name is required"),
@@ -44,7 +50,7 @@ export const settingsAccountValidationSchema = Yup.object().shape({
   country: Yup.string(),
 });
 
-export const passwordAccountValidationSchema = Yup.object().shape({
+export const passwordAccount = Yup.object().shape({
   currentPassword: Yup.string().min(
     8,
     "Password must be at least 8 Characters and must contain at least a Capital Letter, a Number and a Special Character"
@@ -59,7 +65,7 @@ export const passwordAccountValidationSchema = Yup.object().shape({
   ),
 });
 
-export const customerValidationSchema = Yup.object().shape({
+export const customer = Yup.object().shape({
   name: Yup.string()
     .min(3, "Name must be at least 3 characters")
     .required("Name is required"),
@@ -74,7 +80,7 @@ export const customerValidationSchema = Yup.object().shape({
     .required("Phone is required"),
 });
 
-export const addProductValidationSchema = Yup.object().shape({
+export const addProduct = Yup.object().shape({
   category: Yup.string().required("Category is required"),
   costPrice: Yup.number()
     .required("Cost price is required")

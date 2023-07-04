@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import UserAuthForm from "./UserAuthForm";
-import { registerValidationSchema } from "@/utils/validators";
+import { register } from "@/utils/validators";
 import { FormikValues } from "formik";
 import { Input } from "@/components/ui/input";
 import { Icons } from "./Icons";
@@ -48,7 +48,7 @@ function Signup() {
 
   return (
     <UserAuthForm
-      validationSchema={registerValidationSchema}
+      validationSchema={register}
       initialValues={{ fullName: "", email: "", password: "" }}
       onSubmit={handleSubmit}
       submitText="Sign up"
