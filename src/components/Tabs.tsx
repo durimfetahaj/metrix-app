@@ -22,10 +22,6 @@ type TabsProps = {
 const Tabs: React.FC<TabsProps> = ({ defaultValue, tabs }) => {
   const [activeTab, setActiveTab] = useState("");
 
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
-  };
-
   return (
     <ShadTabs defaultValue={defaultValue}>
       <TabsList>

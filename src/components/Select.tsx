@@ -26,7 +26,7 @@ const Select = ({ options, name }: Props) => {
   };
 
   return (
-    <ShadSelect onValueChange={handleValueChange}>
+    <ShadSelect onValueChange={handleValueChange} defaultValue={field.value}>
       <SelectTrigger className="bg-brand-background text-brand-black-40">
         <SelectValue
           placeholder={name.charAt(0).toUpperCase() + name.slice(1)}

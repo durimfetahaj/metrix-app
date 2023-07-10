@@ -28,7 +28,6 @@ function Login() {
         if (!response?.error) {
           router.push("/dashboard");
         } else {
-          console.log(response?.error);
           toast({
             title: "Invalid Credentials",
             description: response?.error,

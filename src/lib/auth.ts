@@ -1,8 +1,5 @@
-import { User } from "next-auth";
-import { app, db, storage } from "@/firebase/firebaseConfig";
+import { app } from "@/firebase/firebaseConfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { getDownloadURL, ref } from "firebase/storage";
 import { NextAuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -21,7 +18,6 @@ export const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-
         try {
           const userCredential = await signInWithEmailAndPassword(
             auth,
@@ -30,31 +26,16 @@ export const authOptions: NextAuthOptions = {
           );
 
           if (userCredential.user) {
-            const uid = userCredential.user.uid;
-            const userDocRef = doc(db, "users", uid);
-            const userDocSnap = await getDoc(userDocRef);
-
-            if (userDocSnap.exists()) {
-              const userData = userDocSnap.data();
-
-              console.log("userData: " + userData);
-
-              const storageRef = ref(storage, userData.avatar);
-              const imageUrl = await getDownloadURL(storageRef);
-
-              return {
-                id: uid,
-                email: userCredential.user.email,
-                image: imageUrl,
-              };
-            } else {
-              throw new Error("Invalid email or password");
-            }
+            return {
+              id: userCredential.user.uid,
+              name: userCredential.user.displayName,
+              email: userCredential.user.email,
+              image: userCredential.user.photoURL,
+            };
           }
         } catch (error) {
           throw new Error("Invalid email or password");
         }
-
         return null;
       },
     }),
@@ -63,8 +44,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ token, session }) {
       if (token) {
-        session.user.id = token.id;
-        session.user.email = token.email;
+        session.user.id = token.sub as string;
       }
       return session;
     },

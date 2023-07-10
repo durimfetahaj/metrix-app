@@ -7,7 +7,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User } from "@/types/next-auth";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import {
@@ -20,9 +19,10 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { Button } from "./ui/button";
+import { User } from "firebase/auth";
 
 type Props = {
-  user: User;
+  user: User | null;
 };
 
 const User = ({ user }: Props) => {
@@ -31,7 +31,7 @@ const User = ({ user }: Props) => {
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
-            <AvatarImage src={user?.image ? user?.image : ""} />
+            <AvatarImage src={user?.photoURL || undefined} />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
