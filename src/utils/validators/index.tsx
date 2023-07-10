@@ -29,40 +29,35 @@ export const resetPassword = Yup.object().shape({
 
 // Export as many validation schemas as you need
 
-export const settingsAccount = Yup.object().shape({
-  firstName: Yup.string()
-    .min(3, "full name must be at least 3 characters")
-    .required("Full name is required"),
-  lastName: Yup.string()
+export const account = Yup.object().shape({
+  displayName: Yup.string()
     .min(3, "full name must be at least 3 characters")
     .required("Full name is required"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  phone: Yup.string()
-    .matches(
-      /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/,
-      "Invalid phone number"
-    )
-    .optional(),
-  address: Yup.string(),
-  city: Yup.string(),
-  country: Yup.string(),
 });
 
-export const passwordAccount = Yup.object().shape({
-  currentPassword: Yup.string().min(
-    8,
-    "Password must be at least 8 Characters and must contain at least a Capital Letter, a Number and a Special Character"
-  ),
-  newPassword: Yup.string().min(
-    8,
-    "Password must be at least 8 Characters and must contain at least a Capital Letter, a Number and a Special Character"
-  ),
-  confirmPassword: Yup.string().min(
-    8,
-    "Password must be at least 8 Characters and must contain at least a Capital Letter, a Number and a Special Character"
-  ),
+export const password = Yup.object().shape({
+  currentPassword: Yup.string()
+    .min(
+      8,
+      "Password must be at least 8 Characters and must contain at least a Capital Letter, a Number and a Special Character"
+    )
+    .required("Current password is required"),
+  newPassword: Yup.string()
+    .notOneOf(
+      [Yup.ref("currentPassword")],
+      "New Password must be different from the Current Password"
+    )
+    .min(
+      8,
+      "Password must be at least 8 characters and must contain at least a capital letter, a number, and a special character"
+    )
+    .required("New Password is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword")], "Passwords must match")
+    .required("Confirm Password is required"),
 });
 
 export const customer = Yup.object().shape({
