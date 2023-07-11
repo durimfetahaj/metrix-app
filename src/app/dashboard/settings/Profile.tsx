@@ -11,13 +11,11 @@ import { Button } from "@/components/ui/button";
 import { ProfileSkeleton } from "@/components/Skeletons";
 import { getAuth } from "firebase/auth";
 import { app } from "@/firebase/firebaseConfig";
+import { useSession } from "next-auth/react";
 
 function ProfileContent() {
   const { loading, updateProfile, user } = useUserStore();
   const { currentUser } = getAuth(app);
-
-  console.log("user setttings ", user);
-
   const handleSubmit = async (values: FormikValues, event: any) => {
     try {
       if (currentUser) {

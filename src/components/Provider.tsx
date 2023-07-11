@@ -3,7 +3,7 @@
 import { app } from "@/firebase/firebaseConfig";
 import { useUserStore } from "@/store/useUser";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 import { FC, ReactNode, useEffect } from "react";
 
 interface LayoutProps {
@@ -11,6 +11,19 @@ interface LayoutProps {
 }
 
 const Providers: FC<LayoutProps> = ({ children }) => {
+  const { setUser, user } = useUserStore();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        alert("User not found");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return <SessionProvider>{children}</SessionProvider>;
 };
 
