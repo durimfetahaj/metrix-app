@@ -17,6 +17,8 @@ function Header({ isHomepage = false }: Props) {
   const { user } = useUserStore();
   const pageTitle = getTitle(usePathname());
 
+  console.log("user header", user);
+
   return (
     <div className="flex items-center justify-between h-[80px] w-full  p-3  bg-white">
       {isHomepage ? <Icons.logo /> : <p>{pageTitle}</p>}

@@ -16,6 +16,8 @@ function ProfileContent() {
   const { loading, updateProfile, user } = useUserStore();
   const { currentUser } = getAuth(app);
 
+  console.log("user setttings ", user);
+
   const handleSubmit = async (values: FormikValues, event: any) => {
     try {
       if (currentUser) {
