@@ -20,8 +20,6 @@ const Providers: FC<LayoutProps> = ({ children }) => {
         alert("User not found");
       }
     });
-
-    return () => unsubscribe();
   }, []);
 
   return <SessionProvider>{children}</SessionProvider>;
