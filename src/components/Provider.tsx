@@ -11,17 +11,6 @@ interface LayoutProps {
 }
 
 const Providers: FC<LayoutProps> = ({ children }) => {
-  const { setUser, user } = useUserStore();
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        alert("User not found");
-      }
-    });
-  }, []);
-
   return <SessionProvider>{children}</SessionProvider>;
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { account } from "@/utils/validators";
 import ImageUploader from "@/components/ImageUploader";
 import { Formik, FormikValues } from "formik";
@@ -9,13 +9,25 @@ import { useUserStore } from "@/store/useUser";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ProfileSkeleton } from "@/components/Skeletons";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { app } from "@/firebase/firebaseConfig";
 import { useSession } from "next-auth/react";
 
 function ProfileContent() {
-  const { loading, updateProfile, user } = useUserStore();
+  const { loading, updateProfile, user, setUser } = useUserStore();
   const { currentUser } = getAuth(app);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        alert("User not found");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   const handleSubmit = async (values: FormikValues, event: any) => {
     try {
       if (currentUser) {
