@@ -1,37 +1,42 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { account } from "@/utils/validators";
 import ImageUploader from "@/components/ImageUploader";
 import { Formik, FormikValues } from "formik";
 import { toast } from "@/components/ui/use-toast";
-import { useUserStore } from "@/store/useUser";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ProfileSkeleton } from "@/components/Skeletons";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { app } from "@/firebase/firebaseConfig";
 import { useSession } from "next-auth/react";
 
 function ProfileContent() {
-  const { loading, updateProfile, user, setUser } = useUserStore();
+  const [isLoading, setIsLoading] = useState(false);
   const { currentUser } = getAuth(app);
+  const { data: session, update } = useSession();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(getAuth(app), (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        alert("User not found");
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
   const handleSubmit = async (values: FormikValues, event: any) => {
     try {
-      if (currentUser) {
-        updateProfile(currentUser, values);
+      setIsLoading(true);
+      if (session?.user) {
+        update({
+          ...session,
+          user: {
+            ...session?.user,
+            name: values?.name,
+            image: values?.image,
+            email: values?.email,
+          },
+        }).then(() => {
+          if (currentUser) {
+            updateProfile(currentUser, {
+              displayName: values?.name,
+              photoURL: values?.image,
+            });
+          }
+        });
       }
       toast({
         title: "Success",
@@ -44,16 +49,18 @@ function ProfileContent() {
         description: error?.message,
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  if (!user || loading) {
+  if (!session?.user || isLoading) {
     return <ProfileSkeleton />;
   }
 
   return (
     <Formik
-      initialValues={{ ...user }}
+      initialValues={{ ...session?.user }}
       validationSchema={account}
       onSubmit={handleSubmit}
     >
@@ -64,11 +71,11 @@ function ProfileContent() {
           </div>
           <div className="flex gap-20">
             <div className="w-96">
-              <Input name="displayName" placeholder="Full Name" />
+              <Input name="name" placeholder="Full Name" />
               <Input name="email" placeholder="E-mail" />
             </div>
             <ImageUploader
-              initialValue={user?.photoURL ? user?.photoURL : ""}
+              initialValue={session?.user?.image ? session?.user?.image : ""}
             />
           </div>
         </form>

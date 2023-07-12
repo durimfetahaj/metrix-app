@@ -19,10 +19,10 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { Button } from "./ui/button";
-import { User } from "firebase/auth";
+import { User } from "next-auth";
 
 type Props = {
-  user: User | null;
+  user: User;
 };
 
 const User = ({ user }: Props) => {
@@ -31,7 +31,7 @@ const User = ({ user }: Props) => {
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
-            <AvatarImage src={user?.photoURL || undefined} />
+            <AvatarImage src={user?.image || undefined} />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>

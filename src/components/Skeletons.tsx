@@ -10,9 +10,6 @@ export const ProfileSkeleton = () => {
         <div className="flex flex-col gap-8">
           <Skeleton className="w-[384px] h-[40px] rounded-lg" />
           <Skeleton className="w-[384px] h-[40px] rounded-lg" />
-          <Skeleton className="w-[384px] h-[40px] rounded-lg" />
-          <Skeleton className="w-[384px] h-[40px] rounded-lg" />
-          <Skeleton className="w-[384px] h-[40px] rounded-lg" />
         </div>
         <Skeleton className="h-40 w-40 rounded-xl" />
       </div>

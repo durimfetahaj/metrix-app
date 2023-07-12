@@ -30,7 +30,7 @@ export const resetPassword = Yup.object().shape({
 // Export as many validation schemas as you need
 
 export const account = Yup.object().shape({
-  displayName: Yup.string()
+  name: Yup.string()
     .min(3, "full name must be at least 3 characters")
     .required("Full name is required"),
   email: Yup.string()

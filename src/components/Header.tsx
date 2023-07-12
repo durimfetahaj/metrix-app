@@ -8,23 +8,19 @@ import { Icons } from "./Icons";
 import { usePathname } from "next/navigation";
 import { getTitle } from "@/utils/functions";
 import UserMenu from "./UserMenu";
-import { useUserStore } from "@/store/useUser";
 
 type Props = { isHomepage?: boolean };
 
 function Header({ isHomepage = false }: Props) {
-  const { status } = useSession();
-  const { user } = useUserStore();
+  const { status, data: session } = useSession();
   const pageTitle = getTitle(usePathname());
-
-  console.log("user header", user);
 
   return (
     <div className="flex items-center justify-between h-[80px] w-full  p-3  bg-white">
       {isHomepage ? <Icons.logo /> : <p>{pageTitle}</p>}
       {status === "authenticated" ? (
         <div className="mr-5">
-          <UserMenu user={user} />
+          <UserMenu user={session?.user} />
         </div>
       ) : (
         <Button onClick={() => signIn()}>Sign In</Button>
