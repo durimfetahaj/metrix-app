@@ -66,7 +66,7 @@ function Password() {
             <Input
               type="password"
               name="confirmPassword"
-              placeholder="Cofirm Password"
+              placeholder="Confirm Password"
             />
           </div>
         </form>
