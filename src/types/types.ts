@@ -7,16 +7,19 @@ export interface Product {
   expiryDate: Date | null;
   id: string;
   images: string;
-  lastTimeSold: Timestamp;
+  lastSoldTimestamp: Timestamp;
   longDescription: string | null;
   name: string;
-  rating: number;
   returnPolicy: string;
   sellingPrice: number;
   shortDescription: string | null;
   stock: number;
   status: "Published" | "Unpublished";
   url: string;
+  ratings: {
+    comment: string;
+    stars: number;
+  };
 }
 
 export interface SummaryCard {

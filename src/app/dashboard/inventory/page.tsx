@@ -1,18 +1,29 @@
+"use client";
+
 import { Icons } from "@/components/Icons";
 import PageHead from "@/components/PageHead";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Products from "./products";
-import { DocumentData, collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase/firebaseConfig";
+import { columns } from "./columns";
+import { DataTable } from "@/components/DataTable";
+import useProducts from "@/store/useProducts";
+import Loader from "@/components/Loader";
 
-export default async function InventoryPage() {
-  const querySnapshot = await getDocs(collection(db, "products"));
-  const products: DocumentData[] = querySnapshot.docs.map((doc) => doc.data());
+export default function InventoryPage() {
+  const { get, products, loading } = useProducts();
+
+  useEffect(() => {
+    get();
+  }, []);
+
+  if (loading || !products) {
+    return <Loader variant="form" />;
+  }
 
   return (
-    <>
+    <div className="flex flex-col gap-8 ">
       <PageHead text="Inventory">
         <Link href="/dashboard/inventory/new">
           <Button>
@@ -21,6 +32,7 @@ export default async function InventoryPage() {
         </Link>
       </PageHead>
       <Products products={products} />
-    </>
+      <DataTable columns={columns} data={products} />
+    </div>
   );
 }

@@ -12,10 +12,17 @@ import {
   Loader2,
   Plus,
   UploadCloud,
+  PlusCircleIcon,
+  Eye,
+  EyeOff,
+  X,
 } from "lucide-react";
 
 export const Icons = {
   user: User,
+  PlusCircleIcon: (props: LucideProps) => <PlusCircleIcon {...props} />,
+  Eye: (props: LucideProps) => <Eye {...props} />,
+  EyeOff: (props: LucideProps) => <EyeOff {...props} />,
   logo: (props: LucideProps) => (
     <svg
       {...props}
@@ -36,6 +43,7 @@ export const Icons = {
       />
     </svg>
   ),
+  CrossIcon: (props: LucideProps) => <X {...props} />,
   sidebar: {
     dashboard: (props: LucideProps) => <LayoutDashboard {...props} />,
     orders: (props: LucideProps) => <ShoppingBag {...props} />,
@@ -46,6 +54,53 @@ export const Icons = {
     open: (props: LucideProps) => <ArrowRightToLine {...props} />,
     close: (props: LucideProps) => <ArrowLeftFromLine {...props} />,
   },
+  upAndDown: (props: LucideProps) => (
+    <svg
+      {...props}
+      width="37"
+      height="36"
+      viewBox="0 0 37 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0.5"
+        width="36"
+        height="36"
+        rx="8"
+        fill="#FFCC91"
+        fill-opacity="0.16"
+      />
+      <path
+        d="M22.8388 26.1642V12.5464"
+        stroke="#130F26"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M26.9163 22.0684L22.8385 26.165L18.7607 22.0684"
+        stroke="#130F26"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12.911 9.83301V23.4508"
+        stroke="#130F26"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8.83301 13.9292L12.9108 9.83252L16.9886 13.9292"
+        stroke="#130F26"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  ),
   spinner: (props: LucideProps) => (
     <svg
       aria-hidden="true"
@@ -202,41 +257,7 @@ export const Icons = {
     </svg>
   ),
   inventory: {
-    folderLight: (props: LucideProps) => (
-      <svg
-        {...props}
-        width="36"
-        height="36"
-        viewBox="0 0 36 36"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M25.8492 21.11C25.8492 24.0917 24.0917 25.8492 21.11 25.8492H14.625C11.6358 25.8492 9.875 24.0917 9.875 21.11V14.61C9.875 11.6325 10.97 9.875 13.9525 9.875H15.6192C16.2175 9.87583 16.7808 10.1567 17.1392 10.6358L17.9 11.6475C18.26 12.1258 18.8233 12.4075 19.4217 12.4083H21.78C24.7692 12.4083 25.8725 13.93 25.8725 16.9725L25.8492 21.11Z"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M14.2344 20.0524H21.5135"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    ),
-    folderDark: (props: LucideProps) => (
+    folder: (props: LucideProps) => (
       <svg
         {...props}
         width="36"
