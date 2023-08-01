@@ -75,6 +75,7 @@ function ProfileContent() {
               <Input name="email" placeholder="E-mail" />
             </div>
             <ImageUploader
+              name="image"
               initialValue={session?.user?.image ? session?.user?.image : ""}
             />
           </div>
