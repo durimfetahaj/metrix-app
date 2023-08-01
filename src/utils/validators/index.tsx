@@ -76,23 +76,19 @@ export const customer = Yup.object().shape({
 });
 
 export const addProduct = Yup.object().shape({
+  name: Yup.string()
+    .required("Product name is required")
+    .min(3, "Name must be longer than 3 characters")
+    .required("Product name is required"),
   category: Yup.string().required("Category is required"),
+  sellingPrice: Yup.number().required("Selling price is required"),
   costPrice: Yup.number()
     .required("Cost price is required")
     .test("is-non-zero", "Cost price cannot be zero", (value) => value !== 0),
-  discount: Yup.number().optional(),
-  hasDiscount: Yup.boolean(),
+  stock: Yup.string().required("Product stock is required"),
+  status: Yup.string().optional(),
   expiryDate: Yup.date(),
   hasExpiryDate: Yup.boolean(),
   images: Yup.array().min(1, "Product has to have one image at least"),
-  stock: Yup.string().required("Product stock is required"),
-  lastSoldTimestamp: Yup.string(),
-  name: Yup.string()
-    .required("Product name is required")
-    .min(3, "Name must be longer than 3 characters"),
-  rating: Yup.number().optional(),
-  sellingPrice: Yup.number().required("Selling price is required"),
   description: Yup.string().required("Product must have a description"),
-  status: Yup.string().optional(),
-  orderType: Yup.string().optional(),
 });

@@ -39,7 +39,9 @@ export const getExpiredProducts = (products: DocumentData[] | null) => {
   const currentDate = new Date();
 
   const expiredProducts = products.filter((product) => {
-    const expiryDate = product.expiryDate?.toDate() || null;
+    const expiryDate = product.hasExpiryDate
+      ? product?.expiryDate.toDate()
+      : null;
     return expiryDate && expiryDate < currentDate;
   });
 

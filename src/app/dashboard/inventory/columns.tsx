@@ -1,6 +1,6 @@
 "use client";
 
-import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
+import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,7 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Select from "@/components/Select";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal } from "lucide-react";
@@ -24,13 +23,12 @@ export const columns: ColumnDef<any>[] = [
       const product = row?.original;
       return (
         <Link href={`/dashboard/inventory/${product.id}`}>
-          <div className="flex items-center gap-6 max-h-16">
+          <div className="flex items-center gap-6 max-h-16 overflow-hidden rounded-xl">
             <Image
               height={50}
               width={50}
               alt={product?.name}
               src={product?.images[0]}
-              className="rounded-xl "
             />
             {product?.name}
           </div>

@@ -21,7 +21,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const hasError = meta.touched && meta.error;
 
     return (
-      <div>
+      <>
         <div className="relative mb-8">
           <input
             type={inputType}
@@ -51,7 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
         </div>
-      </div>
+      </>
     );
   }
 );

@@ -9,7 +9,7 @@ const uploadImageVariants = cva(
   {
     variants: {
       size: {
-        default: "h-40 w-44 px-4 py-7",
+        default: "h-40 w-4. px-4 py-7",
         lg: "h-96 w-96  px-4 py-10",
       },
     },

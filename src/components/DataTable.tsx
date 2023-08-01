@@ -52,7 +52,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-xl bg-white h-3/4 overflow-y-auto ">
+    <div className="rounded-xl bg-white h-2/3 overflow-y-auto ">
       <DataTableToolbar table={table} />
       <Table>
         <TableHeader>

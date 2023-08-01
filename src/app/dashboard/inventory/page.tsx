@@ -23,7 +23,7 @@ export default function InventoryPage() {
   }
 
   return (
-    <div className="flex flex-col gap-8 ">
+    <div className="flex flex-col gap-5">
       <PageHead text="Inventory">
         <Link href="/dashboard/inventory/new">
           <Button>

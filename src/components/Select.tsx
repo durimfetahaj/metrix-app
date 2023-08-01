@@ -15,9 +15,10 @@ interface Option {
 type Props = {
   options: Option[];
   name: string;
+  placeholder: string;
 };
 
-const Select = ({ options, name }: Props) => {
+const Select = ({ options, name, placeholder }: Props) => {
   const [field, meta] = useField(name);
   const { setFieldValue } = useFormikContext();
 
@@ -26,11 +27,9 @@ const Select = ({ options, name }: Props) => {
   };
 
   return (
-    <ShadSelect onValueChange={handleValueChange} defaultValue={field.value}>
-      <SelectTrigger className="bg-brand-background text-brand-black-40">
-        <SelectValue
-          placeholder={name.charAt(0).toUpperCase() + name.slice(1)}
-        />
+    <ShadSelect onValueChange={handleValueChange}>
+      <SelectTrigger className="bg-brand-background">
+        <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         {options.map((option: Option) => (

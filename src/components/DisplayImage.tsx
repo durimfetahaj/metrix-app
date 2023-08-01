@@ -9,7 +9,7 @@ const displayImageVariants = cva(
   {
     variants: {
       size: {
-        default: "h-40 w-40",
+        default: "h-40 w-44",
         lg: "h-96 w-96",
       },
     },
