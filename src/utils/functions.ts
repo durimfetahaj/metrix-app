@@ -1,4 +1,5 @@
-import { DocumentData } from "firebase/firestore";
+import { DocumentData, Timestamp } from "firebase/firestore";
+import moment from "moment";
 
 export function getTitle(pathName: string) {
   let trimmedWord;
@@ -71,4 +72,8 @@ export function truncateString(url: string): string {
       : url;
 
   return truncatedUrl;
+}
+
+export function timestampToDate(date: Timestamp) {
+  return moment(date.toDate().toLocaleDateString()).format("D MMM YYYY");
 }
