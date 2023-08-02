@@ -52,6 +52,7 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
           stock,
           status,
           url,
+          salesCount,
         } = item;
 
         return {
@@ -71,6 +72,7 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
           stock,
           status,
           url,
+          salesCount,
         };
       });
 

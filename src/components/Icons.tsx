@@ -9,9 +9,7 @@ import {
   Settings,
   ArrowRightToLine,
   ArrowLeftFromLine,
-  Loader2,
   Plus,
-  UploadCloud,
   PlusCircleIcon,
   Eye,
   EyeOff,
@@ -103,6 +101,7 @@ export const Icons = {
   ),
   spinner: (props: LucideProps) => (
     <svg
+      {...props}
       aria-hidden="true"
       className="w-10 h-10 mr-2 text-white animate-spin dark:text-gray-600 fill-brand-primary-100"
       viewBox="0 0 100 101"
@@ -289,6 +288,94 @@ export const Icons = {
           stroke-linecap="round"
           stroke-linejoin="round"
         />
+      </svg>
+    ),
+    views: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#FFCC91"
+          fill-opacity="0.16"
+        />
+        <g clip-path="url(#clip0_826_3947)">
+          <path
+            d="M8.83301 18.0002C8.83301 18.0002 12.1663 11.3335 17.9997 11.3335C23.833 11.3335 27.1663 18.0002 27.1663 18.0002C27.1663 18.0002 23.833 24.6668 17.9997 24.6668C12.1663 24.6668 8.83301 18.0002 8.83301 18.0002Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M18 20.5C19.3807 20.5 20.5 19.3807 20.5 18C20.5 16.6193 19.3807 15.5 18 15.5C16.6193 15.5 15.5 16.6193 15.5 18C15.5 19.3807 16.6193 20.5 18 20.5Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_826_3947">
+            <rect
+              width="20"
+              height="20"
+              fill="white"
+              transform="translate(8 8)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+    orders: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#5570F1"
+          fill-opacity="0.08"
+        />
+        <g clip-path="url(#clip0_826_3932)">
+          <path
+            d="M25.6747 21.2417C25.1445 22.4955 24.3153 23.6002 23.2596 24.4595C22.2038 25.3187 20.9537 25.9063 19.6184 26.1707C18.2831 26.4352 16.9034 26.3685 15.5998 25.9766C14.2962 25.5846 13.1085 24.8793 12.1405 23.9223C11.1725 22.9653 10.4537 21.7857 10.0469 20.4867C9.64006 19.1877 9.55765 17.8088 9.80685 16.4706C10.056 15.1324 10.6293 13.8756 11.4764 12.8101C12.3235 11.7446 13.4188 10.9028 14.6664 10.3584"
+            stroke="#5570F1"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M26.3333 17.9998C26.3333 16.9055 26.1178 15.8219 25.699 14.8108C25.2802 13.7998 24.6664 12.8811 23.8926 12.1073C23.1187 11.3335 22.2001 10.7196 21.189 10.3008C20.178 9.88205 19.0943 9.6665 18 9.6665V17.9998H26.3333Z"
+            stroke="#5570F1"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_826_3932">
+            <rect
+              width="20"
+              height="20"
+              fill="white"
+              transform="translate(8 8)"
+            />
+          </clipPath>
+        </defs>
       </svg>
     ),
   },

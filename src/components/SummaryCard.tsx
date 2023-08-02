@@ -8,7 +8,9 @@ type Props = {
 
 function SummaryCard({ data, icon }: Props) {
   return (
-    <div className={`flex flex-col px-4 py-3 w-full gap-5 bg-white rounded-xl`}>
+    <div
+      className={`flex flex-col justify-between px-4 py-3 w-full gap-5 bg-white rounded-xl`}
+    >
       {icon && icon}
       <div className="flex justify-between">
         {data?.map(({ title, value }) => {

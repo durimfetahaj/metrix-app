@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore";
 
 export interface Product {
   category: string;
-  dateAdded: Date;
+  dateAdded: Timestamp;
   discount: number;
   expiryDate: Date | null;
   id: string;
@@ -20,6 +20,7 @@ export interface Product {
     comment: string;
     stars: number;
   };
+  salesCount: number;
 }
 
 export interface SummaryCard {

@@ -62,3 +62,13 @@ export const getActiveProducts = (products: any[]) => {
 
   return activeProducts;
 };
+
+export function truncateString(url: string): string {
+  const maxLength = 50;
+  const truncatedUrl =
+    url && url.length > maxLength
+      ? url.substring(0, maxLength - 3) + "..."
+      : url;
+
+  return truncatedUrl;
+}
