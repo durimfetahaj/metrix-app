@@ -7,17 +7,24 @@ import { Button } from "./ui/button";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
+  placeholder: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
 }
 
 export function DataTableToolbar<TData>({
   table,
+  placeholder,
+  options,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex flex-center space-x-2 m-4">
       <input
-        placeholder="Filter products..."
+        placeholder={placeholder}
         value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
         onChange={(event) =>
           table.getColumn("name")?.setFilterValue(event.target.value)
@@ -28,16 +35,7 @@ export function DataTableToolbar<TData>({
         <DataTableFacetedFilter
           column={table.getColumn("status")}
           title="Status"
-          options={[
-            {
-              value: "published",
-              label: "Published",
-            },
-            {
-              value: "unpublished",
-              label: "Unpublished",
-            },
-          ]}
+          options={options}
         />
       )}
       {isFiltered && (

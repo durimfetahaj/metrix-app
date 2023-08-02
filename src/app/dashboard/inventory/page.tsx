@@ -32,7 +32,15 @@ export default function InventoryPage() {
         </Link>
       </PageHead>
       <Products products={products} />
-      <DataTable columns={columns} data={products} />
+      <DataTable
+        columns={columns}
+        data={products}
+        options={[
+          { value: "Unpublished", label: "Unpublished" },
+          { value: "Published", label: "Published" },
+        ]}
+        placeholder="Search for products..."
+      />
     </div>
   );
 }

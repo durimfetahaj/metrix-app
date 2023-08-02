@@ -27,11 +27,18 @@ import { DataTableToolbar } from "./DataTableToolbar";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  placeholder: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  placeholder,
+  options,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -53,7 +60,11 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="rounded-xl bg-white h-2/3 overflow-y-auto ">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar
+        table={table}
+        placeholder={placeholder}
+        options={options}
+      />
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
