@@ -23,6 +23,20 @@ export interface Product {
   salesCount: number;
 }
 
+interface OrderItem {
+  price: number;
+  productId: string;
+  quantity: number;
+}
+
+export interface Order {
+  createdAt: Timestamp;
+  customerId: string;
+  items: OrderItem[];
+  shippingAddress: string;
+  status: "Pending" | "Completed";
+}
+
 export interface SummaryCard {
   title: string;
   value: number | string;
