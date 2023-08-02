@@ -15,6 +15,8 @@ import { DataTable } from "@/components/DataTable";
 import { columns } from "./columns";
 import useOrders from "@/store/useOrders";
 
+//refactor this component
+
 type Props = {
   params: { productId: string };
 };
