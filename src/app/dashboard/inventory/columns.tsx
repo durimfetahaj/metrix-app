@@ -14,6 +14,17 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import DeleteModal from "./deleteModal";
+import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 
 export const columns: ColumnDef<any>[] = [
   {
@@ -102,27 +113,32 @@ export const columns: ColumnDef<any>[] = [
       const product = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(product.id)}
-            >
-              Copy product ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <Link href={`/dashboard/inventory/${product.id}`}>
-              <DropdownMenuItem>View product</DropdownMenuItem>
-            </Link>
-            <DropdownMenuItem>Delete product</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <AlertDialog>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem
+                onClick={() => navigator.clipboard.writeText(product.id)}
+              >
+                Copy product ID
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <Link href={`/dashboard/inventory/${product.id}`}>
+                <DropdownMenuItem>View product</DropdownMenuItem>
+              </Link>
+              <AlertDialogTrigger asChild>
+                <DropdownMenuItem>Delete product</DropdownMenuItem>
+              </AlertDialogTrigger>
+            </DropdownMenuContent>
+            <DeleteModal product={product} />
+          </DropdownMenu>
+        </AlertDialog>
       );
     },
   },

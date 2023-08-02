@@ -6,6 +6,7 @@ import {
   addDoc,
   updateDoc,
   doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { Product } from "@/types/types";
 import { db } from "@/firebase/firebaseConfig";
@@ -15,6 +16,7 @@ type ProductsStoreState = {
   error: Error | null;
   loading: boolean;
   get: () => void;
+  deleteProduct: (id: string) => void;
   updateStatus: (productId: string, status: string) => void;
   add: (payload: any) => void;
   getProductById: (productId: string) => Promise<Product | null>;
@@ -99,6 +101,32 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
       await addDoc(collection(db, "products"), { ...payload });
     } catch (error) {
       console.log("Error creating product:", error);
+      throw error;
+    }
+  },
+
+  deleteProduct: async (productId: string) => {
+    // Remove the product from the state
+    const updatedProducts = get().products?.filter(
+      (product) => product.id !== productId
+    );
+    set({ products: updatedProducts, loading: false, error: null });
+
+    try {
+      // Find the document with the matching productId
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const matchingDoc = querySnapshot.docs.find(
+        (doc) => doc.data().id === productId
+      );
+
+      if (matchingDoc) {
+        const docRef = doc(db, "products", matchingDoc.id);
+        await deleteDoc(docRef); // Delete the document from the database
+      } else {
+        console.log("Product not found.");
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
       throw error;
     }
   },

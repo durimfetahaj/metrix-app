@@ -27,7 +27,7 @@ function Page() {
   // TODO: add additional images feature
 
   return (
-    <div className="max-w-[1200px]">
+    <div className="max-w-[900px]">
       <Formik
         initialValues={{
           name: "",
