@@ -1,5 +1,3 @@
-"use client";
-
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,17 +12,9 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import DeleteModal from "./deleteModal";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { getStatusClassName } from "@/utils/functions";
 
 export const columns: ColumnDef<any>[] = [
   {
@@ -90,17 +80,7 @@ export const columns: ColumnDef<any>[] = [
       const product = row.original;
       const status =
         product.status === "Published" ? "Published" : "Unpublished";
-      return (
-        <Badge
-          className={`${
-            status === "Published"
-              ? "bg-brand-primary-100 hover:bg-brand-primary-100"
-              : "bg-brand-secondary-80 hover:bg-brand-secondary-80 text-brand-black-50"
-          }  `}
-        >
-          {status}
-        </Badge>
-      );
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));

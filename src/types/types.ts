@@ -34,7 +34,7 @@ export interface Order {
   customerId: string;
   items: OrderItem[];
   shippingAddress: string;
-  status: "Pending" | "Completed";
+  status: "Pending" | "Completed" | "Canceled" | "Returned";
 }
 
 export interface SummaryCard {

@@ -1,7 +1,5 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
-import { timestampToDate } from "@/utils/functions";
+import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 
 export const columns: ColumnDef<any>[] = [
@@ -35,7 +33,7 @@ export const columns: ColumnDef<any>[] = [
     accessorKey: "quantity",
     header: () => <>Quantity</>,
     cell: ({ row }) => {
-      const quantity = row?.original?.items.length;
+      const quantity = row?.original?.items[0]?.quantity;
       return <div>{quantity}</div>;
     },
   },
@@ -43,9 +41,7 @@ export const columns: ColumnDef<any>[] = [
     accessorKey: "total",
     header: "Order Total",
     cell: ({ row }) => {
-      const totalAmount =
-        parseFloat(row?.original?.items[0].price) *
-        parseFloat(row?.original?.items.length);
+      const totalAmount = parseFloat(row?.original?.items[0]?.totalPrice);
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
@@ -60,17 +56,7 @@ export const columns: ColumnDef<any>[] = [
     cell: ({ row }) => {
       const product = row.original;
       const status = product.status;
-      return (
-        <Badge
-          className={`${
-            status === "Completed"
-              ? "bg-brand-success hover:bg-brand-success"
-              : "bg-brand-secondary-80 hover:bg-brand-secondary-80 text-brand-black-50"
-          }  `}
-        >
-          {status}
-        </Badge>
-      );
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
