@@ -9,17 +9,18 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
-import { Button } from "./ui/button";
 import { User } from "next-auth";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
 
 type Props = {
   user: User;
@@ -27,7 +28,7 @@ type Props = {
 
 const User = ({ user }: Props) => {
   return (
-    <Dialog>
+    <AlertDialog>
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
@@ -43,25 +44,30 @@ const User = ({ user }: Props) => {
               Profile
             </Link>
           </DropdownMenuItem>
-          <DialogTrigger asChild>
+          <AlertDialogTrigger asChild>
             <DropdownMenuItem>Log out</DropdownMenuItem>
-          </DialogTrigger>
+          </AlertDialogTrigger>
         </DropdownMenuContent>
       </DropdownMenu>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle className="mb-1">Logout</DialogTitle>
-          <DialogDescription>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle className="mb-1">Logout</AlertDialogTitle>
+          <AlertDialogDescription>
             Are you sure you want to logout?
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <Button variant="destructive" onClick={() => signOut()} type="submit">
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            className="bg-brand-error hover:bg-brand-error"
+            onClick={() => signOut()}
+            type="submit"
+          >
             Confirm
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
 
