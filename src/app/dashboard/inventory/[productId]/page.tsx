@@ -6,7 +6,11 @@ import useProducts from "@/store/useProducts";
 import Loader from "@/components/Loader";
 import { Order, Product } from "@/types/types";
 import moment from "moment";
-import { timestampToDate, truncateString } from "@/utils/functions";
+import {
+  getStatusClassName,
+  timestampToDate,
+  truncateString,
+} from "@/utils/functions";
 import { DisplayImage } from "@/components/DisplayImage";
 import SummaryCard from "@/components/SummaryCard";
 import { Badge } from "@/components/ui/badge";
@@ -70,13 +74,7 @@ export default function ProductPage({ params }: Props) {
             ]}
             icon={
               <div>
-                <Badge
-                  className={`${
-                    product?.status === "Published"
-                      ? "bg-brand-primary-100 hover:bg-brand-primary-100"
-                      : "bg-brand-secondary-80 hover:bg-brand-secondary-80 text-brand-black-50"
-                  }   `}
-                >
+                <Badge className={getStatusClassName(product?.status)}>
                   {product?.status}
                 </Badge>
               </div>
