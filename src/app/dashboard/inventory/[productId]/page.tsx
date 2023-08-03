@@ -1,5 +1,4 @@
 "use client";
-
 import { Icons } from "@/components/Icons";
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
@@ -15,36 +14,17 @@ import { DataTable } from "@/components/DataTable";
 import { columns } from "./columns";
 import useOrders from "@/store/useOrders";
 
-//refactor this component
-
 type Props = {
   params: { productId: string };
 };
 
 export default function ProductPage({ params }: Props) {
-  const { getProductById, loading } = useProducts();
-  const { getOrdersByProductId } = useOrders();
-  const [product, setProduct] = useState<Product | null>(null);
-  const [orders, setOrders] = useState<Array<Order>>([]);
-  const status = product?.status === "Published" ? "Unpublish" : "Publish";
-  const dateAdded = product?.dateAdded
-    ? timestampToDate(product?.dateAdded)
-    : null;
+  const { loading, product, dateAdded, orders, fetchData, handleUpdateStatus } =
+    useProductData(params.productId);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (params?.productId) {
-        const product = await getProductById(params.productId as string);
-        setProduct(product);
-        if (product) {
-          const orders = await getOrdersByProductId(product?.id);
-          setOrders(orders);
-        }
-      }
-    };
-
     fetchData();
-  }, [params.productId]);
+  }, []);
 
   if (loading || !product) {
     return <Loader variant="form" />;
@@ -70,8 +50,8 @@ export default function ProductPage({ params }: Props) {
             </a>
           </p>
         </div>
-        <Button onClick={() => alert("Product has been published")}>
-          {status}
+        <Button onClick={handleUpdateStatus}>
+          {product?.status === "Published" ? "Unpublish" : "Publish"}
         </Button>
       </div>
       <div className="flex gap-5">
@@ -127,28 +107,36 @@ export default function ProductPage({ params }: Props) {
         <SummaryCard
           data={[
             {
-              title: "Last Order",
-              value: moment(
-                product?.lastSoldTimestamp?.toDate().toLocaleDateString()
-              ).format("D MMM YYYY"),
+              title: "All Orders",
+              value: orders?.length,
             },
-            { title: "Price", value: product?.sellingPrice + "€" },
-            { title: "In-Stock", value: product?.stock },
+            {
+              title: "Pending",
+              value: orders?.filter((order) => order.status === "Pending")
+                .length,
+            },
+            {
+              title: "Completed",
+              value: orders?.filter((order) => order.status === "Completed")
+                .length,
+            },
           ]}
-          icon={<Icons.inventory.folder />}
+          icon={<Icons.inventory.bag />}
         />
         <SummaryCard
           data={[
             {
-              title: "Last Order",
-              value: moment(
-                product?.lastSoldTimestamp?.toDate().toLocaleDateString()
-              ).format("D MMM YYYY"),
+              title: "Canceled",
+              value: orders?.filter((order) => order.status === "Canceled")
+                .length,
             },
-            { title: "Price", value: product?.sellingPrice + "€" },
-            { title: "In-Stock", value: product?.stock },
+            {
+              title: "Returned",
+              value: orders?.filter((order) => order.status === "Returned")
+                .length,
+            },
           ]}
-          icon={<Icons.inventory.folder />}
+          icon={<Icons.inventory.bag />}
         />
       </div>
       <DataTable
@@ -168,4 +156,45 @@ export default function ProductPage({ params }: Props) {
       />
     </div>
   );
+}
+
+function useProductData(productId: string) {
+  const { getProductById, updateStatus, loading } = useProducts();
+  const { getOrdersByProductId } = useOrders();
+  const [product, setProduct] = useState<Product | undefined>();
+  const [orders, setOrders] = useState<Array<Order>>([]);
+
+  const status = product?.status === "Published" ? "Unpublish" : "Publish";
+  const dateAdded = product?.dateAdded
+    ? timestampToDate(product?.dateAdded)
+    : null;
+
+  const fetchData = async () => {
+    const product = await getProductById(productId);
+    if (product) {
+      setProduct(product);
+      const orders = await getOrdersByProductId(product?.id);
+      setOrders(orders);
+    }
+  };
+
+  const handleUpdateStatus = async () => {
+    if (product) {
+      updateStatus(
+        product?.id,
+        product?.status === "Published" ? "Unpublished" : "Published"
+      );
+    }
+    fetchData();
+  };
+
+  return {
+    status,
+    dateAdded,
+    orders,
+    fetchData,
+    handleUpdateStatus,
+    product,
+    loading,
+  };
 }

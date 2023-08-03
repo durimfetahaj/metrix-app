@@ -4,14 +4,14 @@ import { Order } from "@/types/types";
 import { db } from "@/firebase/firebaseConfig";
 
 type ordersStoreState = {
-  orders: DocumentData[] | null;
+  orders: DocumentData[] | [];
   error: Error | null;
   loading: boolean;
   getOrdersByProductId: (productId: string) => Promise<Array<Order>>;
 };
 
 const useOrders = create<ordersStoreState>((set, get) => ({
-  orders: null,
+  orders: [],
   loading: false,
   error: null,
 
@@ -21,7 +21,7 @@ const useOrders = create<ordersStoreState>((set, get) => ({
     const orders: Order[] = [];
     ordersSnapshot.forEach((doc) => {
       const order = doc.data() as Order;
-      const matchingProduct = order.items.find(
+      const matchingProduct = order?.items?.find(
         (item) => item.productId === productId
       );
       if (matchingProduct) {

@@ -7,23 +7,24 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
 import { Product } from "@/types/types";
 import { db } from "@/firebase/firebaseConfig";
 
 type ProductsStoreState = {
-  products: DocumentData[] | null;
+  products: DocumentData[] | [];
   error: Error | null;
   loading: boolean;
   get: () => void;
   deleteProduct: (id: string) => void;
   updateStatus: (productId: string, status: string) => void;
   add: (payload: any) => void;
-  getProductById: (productId: string) => Promise<Product | null>;
+  getProductById: (productId: string) => Promise<Product | undefined>;
 };
 
 const useProducts = create<ProductsStoreState>((set, get) => ({
-  products: null,
+  products: [],
   loading: false,
   error: null,
 
@@ -78,24 +79,26 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
 
       set({ products, loading: false, error: null });
     } catch (error) {
-      set({ products: null, loading: false, error: error as Error });
+      set({ products: [], loading: false, error: error as Error });
     }
   },
 
-  getProductById: async (productId) => {
-    set({ loading: true });
-    await get().get();
-
-    if (get().products) {
-      const products = get().products;
-      const product = products?.find((product) => product.id === productId);
-
-      if (product) {
-        return product as Product;
+  getProductById: async (productId): Promise<Product | undefined> => {
+    try {
+      const docRef = doc(db, "products", productId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const product = docSnap.data();
+        set((state) => ({
+          products: [...state.products, product],
+        }));
+        if (product) return product as Product;
+      } else {
+        console.log("Product not found!");
       }
-      set({ loading: false });
+    } catch (error) {
+      console.log("error", error);
     }
-    return null;
   },
 
   add: async (payload: any) => {
@@ -108,25 +111,13 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
   },
 
   deleteProduct: async (productId: string) => {
-    // Remove the product from the state
-    const updatedProducts = get().products?.filter(
-      (product) => product.id !== productId
-    );
-    set({ products: updatedProducts, loading: false, error: null });
-
     try {
-      // Find the document with the matching productId
-      const querySnapshot = await getDocs(collection(db, "products"));
-      const matchingDoc = querySnapshot.docs.find(
-        (doc) => doc.data().id === productId
-      );
-
-      if (matchingDoc) {
-        const docRef = doc(db, "products", matchingDoc.id);
-        await deleteDoc(docRef); // Delete the document from the database
-      } else {
-        console.log("Product not found.");
-      }
+      await deleteDoc(doc(db, "products", productId));
+      set({
+        products: get().products?.filter((product) => product.id !== productId),
+        loading: false,
+        error: null,
+      });
     } catch (error) {
       console.error("Error deleting product:", error);
       throw error;
@@ -134,22 +125,21 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
   },
 
   updateStatus: async (productId: string, newStatus: string) => {
-    const updatedProducts = get().products?.map((product) =>
-      product.id === productId ? { ...product, status: newStatus } : product
-    );
-    set({ products: updatedProducts, loading: false, error: null });
     try {
-      const querySnapshot = await getDocs(collection(db, "products"));
-      const matchingDoc = querySnapshot.docs.find(
-        (doc) => doc.data().id === productId
-      );
-
-      if (matchingDoc) {
-        const docRef = doc(db, "products", matchingDoc.id);
-        await updateDoc(docRef, { status: newStatus });
-      } else {
-        console.log("Product not found.");
-      }
+      const product = doc(db, "products", productId);
+      await updateDoc(product, {
+        status: newStatus,
+      });
+      set((state) => {
+        const updatedProducts = state.products.map((product) => {
+          if (product.id === productId) {
+            return { ...product, status: newStatus };
+          }
+          return product;
+        });
+        return { products: updatedProducts };
+      });
+      console.log("products", get().products[0].status);
     } catch (error) {
       console.error("Error updating status:", error);
       throw error;

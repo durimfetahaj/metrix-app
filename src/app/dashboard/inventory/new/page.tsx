@@ -16,13 +16,9 @@ import ImageUploader from "@/components/ImageUploader";
 import Textarea from "@/components/Textarea";
 
 function Page() {
-  const { add, get } = useProducts();
+  const { add } = useProducts();
   const { toast } = useToast();
   const router = useRouter();
-
-  // useEffect(() => {
-  //   get();
-  // }, [get]);
 
   // TODO: add additional images feature
 
