@@ -27,14 +27,22 @@ interface OrderItem {
   price: number;
   productId: string;
   quantity: number;
+  totalPrice: number;
+}
+interface Customer {
+  email: string;
+  name: string;
 }
 
 export interface Order {
   createdAt: Timestamp;
-  customerId: string;
+  customer: Customer;
   items: OrderItem[];
   shippingAddress: string;
   status: "Pending" | "Completed" | "Canceled" | "Returned";
+  type: "Take Yourself" | "Home Delivery";
+  trackingId: string;
+  totalPrice: number;
 }
 
 export interface SummaryCard {

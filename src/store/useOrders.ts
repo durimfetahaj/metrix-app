@@ -1,5 +1,11 @@
 import { create } from "zustand";
-import { collection, getDocs, DocumentData } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  DocumentData,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { Order } from "@/types/types";
 import { db } from "@/firebase/firebaseConfig";
 
@@ -8,12 +14,28 @@ type ordersStoreState = {
   error: Error | null;
   loading: boolean;
   getOrdersByProductId: (productId: string) => Promise<Array<Order>>;
+  get: () => void;
 };
 
 const useOrders = create<ordersStoreState>((set, get) => ({
   orders: [],
   loading: false,
   error: null,
+
+  get: async () => {
+    try {
+      const docRef = doc(db, "orders");
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        set({ orders: docSnap.data() as DocumentData[] });
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    } catch (error) {}
+  },
 
   getOrdersByProductId: async (productId): Promise<Array<Order>> => {
     const ordersSnapshot = await getDocs(collection(db, "orders"));

@@ -74,13 +74,16 @@ export function truncateString(url: string): string {
   return truncatedUrl;
 }
 
-export function timestampToDate(date: Timestamp) {
-  return moment(date.toDate().toLocaleDateString()).format("D MMM YYYY");
+export function timestampToDate(date: any) {
+  const createdAtTimestamp = new Timestamp(date?.seconds, date?.nanoseconds);
+  return moment(createdAtTimestamp.toDate().toLocaleDateString()).format(
+    "D MMM YYYY"
+  );
 }
 
 export function getStatusClassName(status: String) {
   if (status === "Completed") {
-    return "bg-brand-success hover:bg-brand-success text-brand-black-50";
+    return "bg-brand-success hover:bg-brand-success text-white";
   } else if (status === "Canceled" || status === "Returned") {
     return "bg-brand-error hover:bg-brand-error";
   } else if (status === "Published") {
