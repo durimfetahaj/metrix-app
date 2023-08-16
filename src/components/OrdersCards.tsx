@@ -3,7 +3,7 @@ import React from "react";
 import SummaryCard from "./SummaryCard";
 import { Icons } from "./Icons";
 import { getStatusClassName, timestampToDate } from "@/utils/functions";
-import { Badge } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 type Props = {
   orders: Order[];
@@ -47,7 +47,7 @@ export function OrdersCards({ orders }: Props) {
 
 export function OrderCards({ order }: { order: Order }) {
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid grid-cols-3 gap-5 ">
       <SummaryCard
         data={[
           {

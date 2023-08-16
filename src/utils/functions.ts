@@ -89,6 +89,6 @@ export function getStatusClassName(status: String) {
   } else if (status === "Published") {
     return "bg-brand-success hover:bg-brand-success";
   } else {
-    return "bg-brand-secondary-80 hover:bg-brand-secondary-70 text-brand-black-50";
+    return "bg-brand-secondary-30 hover:bg-brand-secondary-30 text-brand-black-50";
   }
 }
