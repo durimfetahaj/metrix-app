@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Order } from "@/types/types";
 import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 
 export const columns: ColumnDef<Order>[] = [
   {
@@ -10,7 +11,16 @@ export const columns: ColumnDef<Order>[] = [
     header: "Customer Name",
     cell: ({ row }) => {
       const customerName = row.original.customer?.name;
-      return <p>{customerName}</p>;
+      return (
+        <div className="flex">
+          <Link
+            href={`/dashboard/orders/${row?.original?.id}`}
+            className="w-full"
+          >
+            {customerName}
+          </Link>
+        </div>
+      );
     },
   },
   {

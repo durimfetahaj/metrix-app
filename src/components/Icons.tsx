@@ -427,4 +427,113 @@ export const Icons = {
       </svg>
     ),
   },
+  orders: {
+    profile: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="45"
+        height="45"
+        viewBox="0 0 45 45"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="45"
+          height="45"
+          rx="8"
+          fill="#FFCC91"
+          fill-opacity="0.16"
+        />
+        <path
+          d="M22.9958 26.7037C17.964 26.7037 13.666 27.4971 13.666 30.6704C13.666 33.8449 17.9372 34.6662 22.9958 34.6662C28.0277 34.6662 32.3257 33.8741 32.3257 30.6996C32.3257 27.5251 28.0557 26.7037 22.9958 26.7037Z"
+          fill="#130F26"
+        />
+        <path
+          opacity="0.4"
+          d="M22.9963 23.681C26.4239 23.681 29.1703 20.9335 29.1703 17.507C29.1703 14.0805 26.4239 11.333 22.9963 11.333C19.5698 11.333 16.8223 14.0805 16.8223 17.507C16.8223 20.9335 19.5698 23.681 22.9963 23.681Z"
+          fill="#130F26"
+        />
+      </svg>
+    ),
+    location: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#FFCC91"
+          fill-opacity="0.16"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M20.0827 16.7504C20.0827 15.5993 19.15 14.6666 17.9998 14.6666C16.8487 14.6666 15.916 15.5993 15.916 16.7504C15.916 17.9006 16.8487 18.8333 17.9998 18.8333C19.15 18.8333 20.0827 17.9006 20.0827 16.7504Z"
+          stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M17.9996 25.5C17.0009 25.5 11.75 21.2486 11.75 16.8027C11.75 13.3222 14.5476 10.5 17.9996 10.5C21.4516 10.5 24.25 13.3222 24.25 16.8027C24.25 21.2486 18.9983 25.5 17.9996 25.5Z"
+          stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ),
+    card: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#FFCC91"
+          fill-opacity="0.16"
+        />
+        <g clip-path="url(#clip0_64_24825)">
+          <path
+            d="M25.5006 11.3334H10.5007C9.58018 11.3334 8.83398 12.0796 8.83398 13V23C8.83398 23.9205 9.58018 24.6667 10.5007 24.6667H25.5006C26.4211 24.6667 27.1673 23.9205 27.1673 23V13C27.1673 12.0796 26.4211 11.3334 25.5006 11.3334Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.83398 16.3334H27.1673"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_64_24825">
+            <rect
+              width="20"
+              height="20"
+              fill="white"
+              transform="translate(8 8)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  },
 };

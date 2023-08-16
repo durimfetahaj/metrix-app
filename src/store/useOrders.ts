@@ -28,7 +28,6 @@ const useOrders = create<ordersStoreState>((set, get) => ({
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
         set({ orders: docSnap.data() as DocumentData[] });
       } else {
         // docSnap.data() will be undefined in this case
