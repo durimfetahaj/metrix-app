@@ -2,7 +2,6 @@ import { FC, HTMLAttributes } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { Icons } from "./Icons";
 
 const displayImageVariants = cva(
   "rounded-xl bg-white relative rounded-xl overflow-hidden border",

@@ -5,26 +5,23 @@ import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 
-export const columns: ColumnDef<Order>[] = [
+export const columns: ColumnDef<any>[] = [
   {
-    accessorKey: "customerName",
+    accessorKey: "name",
     header: "Customer Name",
     cell: ({ row }) => {
-      const customerName = row.original.customer?.name;
+      const customer = row.original?.customer;
       return (
         <div className="flex">
-          <Link
-            href={`/dashboard/orders/${row?.original?.id}`}
-            className="w-full"
-          >
-            {customerName}
+          <Link href={`/dashboard/orders/${customer?.name}`} className="w-full">
+            {customer?.name}
           </Link>
         </div>
       );
     },
   },
   {
-    accessorKey: "",
+    accessorKey: "orderDate",
     header: "Order Date",
     cell: ({ row }) => {
       const order = row.original;

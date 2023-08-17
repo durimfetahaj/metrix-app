@@ -5,7 +5,7 @@ import ItemInfoSummary from "@/components/ItemInfoSummary";
 import { timestampToDate } from "@/utils/functions";
 import { DataTable } from "@/components/DataTable";
 import { columns } from "./columns";
-import { OrderCards } from "@/components/OrdersCards";
+import { OrderCards } from "@/components/Cards";
 
 async function getData(orderId: string): Promise<Order | null> {
   const orderDocRef = doc(db, "orders", orderId);

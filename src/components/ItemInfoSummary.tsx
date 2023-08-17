@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-  firstItem: { title: string; value: string };
+  firstItem: { title: string; value: string | undefined };
   secondItem: { title: string; value: string };
   children: React.ReactNode;
 };

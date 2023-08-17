@@ -24,15 +24,13 @@ const useOrders = create<ordersStoreState>((set, get) => ({
 
   get: async () => {
     try {
-      const docRef = doc(db, "orders");
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        set({ orders: docSnap.data() as DocumentData[] });
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
+      const querySnapshot = await getDocs(collection(db, "orders"));
+      const orders: Order[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data() as Order;
+        orders.push(data);
+      });
+      set({ orders, loading: false, error: null });
     } catch (error) {}
   },
 

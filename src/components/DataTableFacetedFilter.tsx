@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { Column } from "@tanstack/react-table";
 import { cn } from "@/lib/utils";
@@ -21,6 +23,8 @@ interface DataTableFacetedFilter<TData, TValue> {
     icon?: React.ComponentType<{ className?: string }>;
   }[];
 }
+
+//TODO: Fix Hydration failed for the button below
 
 export function DataTableFacetedFilter<TData, TValue>({
   column,

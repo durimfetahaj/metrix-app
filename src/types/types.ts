@@ -53,14 +53,17 @@ export interface OrderItem {
   totalPrice: number;
   status: (typeof orderItemStatusOptions)[number];
 }
-interface Customer {
+export interface Customer {
+  id: string;
   email: string;
   name: string;
   phone: string;
-  accountCreatedAt: {
+  createdAt: {
     seconds: number;
     nanoseconds: number;
   };
+  status: "Active" | "Inactive";
+  orders: Order[];
 }
 
 interface ShippingAddress {

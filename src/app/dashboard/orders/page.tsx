@@ -4,7 +4,7 @@ import { Order, orderStatusOptions } from "@/types/types";
 import { collection, getDocs } from "firebase/firestore";
 import { FC } from "react";
 import { columns } from "./columns";
-import { OrdersCards } from "@/components/OrdersCards";
+import { OrdersCards } from "@/components/Cards";
 
 async function getData(): Promise<Order[]> {
   const orders: Order[] = [];
@@ -18,6 +18,8 @@ async function getData(): Promise<Order[]> {
 
   return orders;
 }
+
+//TODO: fix search filter
 
 const page: FC = async () => {
   const orders = await getData();

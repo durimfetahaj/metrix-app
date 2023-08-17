@@ -84,11 +84,33 @@ export function timestampToDate(date: any) {
 export function getStatusClassName(status: String) {
   if (status === "Completed") {
     return "bg-brand-success hover:bg-brand-success text-white";
-  } else if (status === "Canceled" || status === "Returned") {
+  } else if (
+    status === "Canceled" ||
+    status === "Returned" ||
+    status === "Inactive"
+  ) {
     return "bg-brand-error hover:bg-brand-error";
-  } else if (status === "Published") {
+  } else if (status === "Published" || status === "Active") {
     return "bg-brand-success hover:bg-brand-success";
   } else {
     return "bg-brand-secondary-30 hover:bg-brand-secondary-30 text-brand-black-50";
   }
+}
+
+export function isNewUser(data: any[]) {
+  const currentDate = new Date();
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(currentDate.getDate() - 30);
+
+  const newCustomers = data.filter((data) => {
+    const createdAtTimestamp = new Timestamp(
+      data?.createdAt?.seconds,
+      data?.createdAt?.nanoseconds
+    ).toDate();
+    return (
+      createdAtTimestamp >= thirtyDaysAgo && createdAtTimestamp <= currentDate
+    );
+  });
+
+  return newCustomers.length;
 }
