@@ -17,7 +17,7 @@ type ProductsStoreState = {
   error: Error | null;
   loading: boolean;
   get: () => void;
-  deleteProduct: (id: string) => void;
+  remove: (id: string) => void;
   updateStatus: (productId: string, status: string) => void;
   add: (payload: any) => void;
   getProductById: (productId: string) => Promise<Product | undefined>;
@@ -97,7 +97,7 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
         console.log("Product not found!");
       }
     } catch (error) {
-      console.log("error", error);
+      throw error;
     }
   },
 
@@ -105,12 +105,11 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
     try {
       await addDoc(collection(db, "products"), { ...payload });
     } catch (error) {
-      console.log("Error creating product:", error);
       throw error;
     }
   },
 
-  deleteProduct: async (productId: string) => {
+  remove: async (productId: string) => {
     try {
       await deleteDoc(doc(db, "products", productId));
       set({
@@ -139,7 +138,6 @@ const useProducts = create<ProductsStoreState>((set, get) => ({
         });
         return { products: updatedProducts };
       });
-      console.log("products", get().products[0].status);
     } catch (error) {
       console.error("Error updating status:", error);
       throw error;

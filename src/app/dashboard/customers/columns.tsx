@@ -12,11 +12,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import { getStatusClassName, timestampToDate } from "@/utils/functions";
+import { getStatusClassName } from "@/utils/functions";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
+import DeleteModal from "./DeleteModal";
+import { Customer } from "@/types/types";
 
 export const columns: ColumnDef<any>[] = [
   {
@@ -74,7 +76,6 @@ export const columns: ColumnDef<any>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const customer = row.original;
-
       return (
         <AlertDialog>
           <DropdownMenu>
@@ -99,12 +100,9 @@ export const columns: ColumnDef<any>[] = [
                 <DropdownMenuItem>Delete product</DropdownMenuItem>
               </AlertDialogTrigger>
             </DropdownMenuContent>
-            <Modal
-              title="Are you absolutely sure?"
-              description="This action cannot be undone. This will permanently delete this customer"
-              actionText="Delete"
-              isDelete
-              onSubmit={() => alert("Hi")}
+            <DeleteModal
+              customerId={customer?.id}
+              customerName={customer?.name}
             />
           </DropdownMenu>
         </AlertDialog>

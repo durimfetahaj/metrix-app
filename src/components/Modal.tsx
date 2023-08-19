@@ -17,7 +17,7 @@ interface AlertDialog {
   actionText: string;
   children?: React.ReactNode;
   isDelete?: boolean;
-  onSubmit: () => void;
+  onSubmit: (id?: string) => void;
 }
 
 const Modal: FC<AlertDialog> = ({

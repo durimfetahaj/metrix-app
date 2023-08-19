@@ -1,48 +1,31 @@
-import {
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import useProducts from "@/store/useProducts";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "@/components/ui/use-toast";
+import Modal from "@/components/Modal";
 
 type Props = {
-  product: any;
+  productId: string;
+  productName: string;
 };
 
-const DeleteModal = ({ product }: Props) => {
-  const { deleteProduct } = useProducts();
-  const { toast } = useToast();
+const DeleteModal = ({ productId, productName }: Props) => {
+  const { remove } = useProducts();
+
+  const handleDelete = () => {
+    remove(productId);
+    toast({
+      title: "Product deleted.",
+      description: `product ${productName}  has been deleted`,
+      variant: "success",
+    });
+  };
   return (
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-        <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete this
-          product
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction
-          className="bg-red-500 hover:bg-red-400"
-          onClick={() => {
-            deleteProduct(product?.id);
-            toast({
-              title: "Product deleted.",
-              description: `${product?.name} has been deleted from inventory`,
-              variant: "success",
-            });
-          }}
-        >
-          Delete
-        </AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
+    <Modal
+      title="Are you absolutely sure?"
+      description="This action cannot be undone. This will permanently delete this customer"
+      actionText="Delete"
+      isDelete
+      onSubmit={handleDelete}
+    />
   );
 };
 

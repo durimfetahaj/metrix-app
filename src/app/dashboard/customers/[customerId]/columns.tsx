@@ -29,7 +29,7 @@ export const columns: ColumnDef<Order>[] = [
       const totalPrice = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
-      }).format(parseFloat(row?.original?.totalPrice.toString()));
+      }).format(parseFloat(row?.original?.totalPrice?.toString()));
       return <p>{totalPrice}</p>;
     },
   },

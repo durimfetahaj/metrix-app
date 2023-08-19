@@ -87,8 +87,8 @@ interface PaymentMethod {
 }
 
 export interface Order {
-  orderNumber: string;
   id: string;
+  orderNumber: string;
   createdAt: {
     seconds: number;
     nanoseconds: number;

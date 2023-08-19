@@ -17,7 +17,7 @@ type customersStoreState = {
   error: Error | null;
   loading: boolean;
   get: () => void;
-  deleteProduct: (id: string) => void;
+  remove: (customerId: string) => void;
   updateStatus: (productId: string, status: string) => void;
   add: (payload: any) => void;
   getProductById: (productId: string) => Promise<Product | undefined>;
@@ -58,7 +58,7 @@ const useCustomers = create<customersStoreState>((set, get) => ({
         console.log("Product not found!");
       }
     } catch (error) {
-      console.log("error", error);
+      throw new Error(error as any);
     }
   },
 
@@ -75,23 +75,22 @@ const useCustomers = create<customersStoreState>((set, get) => ({
         error: null,
       }));
     } catch (error) {
-      console.log("Error creating product:", error);
       throw error;
     }
   },
 
-  deleteProduct: async (productId: string) => {
+  remove: async (customerId: string) => {
     try {
-      await deleteDoc(doc(db, "customers", productId));
+      await deleteDoc(doc(db, "customers", customerId));
       set({
         customers: get().customers?.filter(
-          (product) => product.id !== productId
+          (customer) => customer.id !== customerId
         ),
         loading: false,
         error: null,
       });
     } catch (error) {
-      console.error("Error deleting product:", error);
+      console.error("Error deleting customer:", error);
       throw error;
     }
   },
@@ -111,7 +110,6 @@ const useCustomers = create<customersStoreState>((set, get) => ({
         });
         return { customers: updatedcustomers };
       });
-      console.log("customers", get().customers[0].status);
     } catch (error) {
       console.error("Error updating status:", error);
       throw error;
