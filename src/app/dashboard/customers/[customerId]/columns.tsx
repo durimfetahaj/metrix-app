@@ -1,53 +1,36 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { OrderItem } from "@/types/types";
-import { getStatusClassName } from "@/utils/functions";
+import { Order } from "@/types/types";
+import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 
-export const columns: ColumnDef<OrderItem>[] = [
+export const columns: ColumnDef<Order>[] = [
   {
-    accessorKey: "productName",
-    header: "Product Name",
+    accessorKey: "createdAt",
+    header: "Order Date",
     cell: ({ row }) => {
-      const productName = row.original?.name;
-      return <p>{productName}</p>;
+      const createdAt = row.original?.createdAt;
+      return <p>{timestampToDate(createdAt)}</p>;
     },
   },
   {
-    accessorKey: "price",
-    header: "Unit Price",
-    cell: ({ row }) => {
-      const sellingPrice = parseFloat(row?.original?.price.toString());
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "EUR",
-      }).format(sellingPrice);
-
-      return <div>{formatted}</div>;
-    },
+    accessorKey: "type",
+    header: "Order Type",
   },
   {
-    accessorKey: "quantity",
-    header: "Quantity",
-    cell: ({ row }) => {
-      const quantity = row.original?.quantity;
-      return <p>{quantity}</p>;
-    },
+    accessorKey: "trackingId",
+    header: "Tracking ID",
   },
   {
-    accessorKey: "total",
+    accessorKey: "totalPrice",
     header: "Order Total",
     cell: ({ row }) => {
-      const sellingPrice =
-        parseFloat(row?.original?.price.toString()) *
-        parseFloat(row?.original?.quantity.toString());
-      const total = new Intl.NumberFormat("en-US", {
+      const totalPrice = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
-      }).format(sellingPrice);
-
-      return <div>{total}</div>;
+      }).format(parseFloat(row?.original?.totalPrice.toString()));
+      return <p>{totalPrice}</p>;
     },
   },
   {

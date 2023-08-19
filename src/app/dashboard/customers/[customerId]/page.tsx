@@ -55,8 +55,9 @@ const page = async ({ params }: Props) => {
             Tracking Id {""}
             <span className="text-brand-black-30">
               {
-                customer?.orders.find((order) => order?.status === "Processing")
-                  ?.trackingId
+                customer?.orders?.find(
+                  (order) => order?.status === "Processing"
+                )?.trackingId
               }
             </span>
           </p>

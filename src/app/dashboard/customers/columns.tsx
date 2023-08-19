@@ -1,4 +1,5 @@
 "use client";
+
 import Modal from "@/components/Modal";
 import { AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
