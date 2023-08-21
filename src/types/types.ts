@@ -52,6 +52,7 @@ export interface OrderItem {
   quantity: number;
   totalPrice: number;
   status: (typeof orderItemStatusOptions)[number];
+  images: string[];
 }
 export interface Customer {
   id: string;

@@ -1,6 +1,5 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
-import { Order } from "@/types/types";
 import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
@@ -10,11 +9,11 @@ export const columns: ColumnDef<any>[] = [
     accessorKey: "name",
     header: "Customer Name",
     cell: ({ row }) => {
-      const customer = row.original?.customer;
+      const order = row.original;
       return (
         <div className="flex">
-          <Link href={`/dashboard/orders/${customer?.name}`} className="w-full">
-            {customer?.name}
+          <Link href={`/dashboard/orders/${order?.id}`} className="w-full">
+            {order?.customer?.name}
           </Link>
         </div>
       );

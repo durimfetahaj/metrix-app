@@ -15,7 +15,6 @@ import Image from "next/image";
 import DeleteModal from "./DeleteModal";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { getStatusClassName } from "@/utils/functions";
-import { Product } from "@/types/types";
 
 export const columns: ColumnDef<any>[] = [
   {
