@@ -88,17 +88,17 @@ export function timestampToDate(date: any) {
 
 export function getStatusClassName(status: String) {
   if (status === "Completed") {
-    return "bg-brand-success hover:bg-brand-success text-white";
+    return "bg-brand-success hover:bg-brand-success text-white text-xs md:text-md";
   } else if (
     status === "Canceled" ||
     status === "Returned" ||
     status === "Inactive"
   ) {
-    return "bg-brand-error hover:bg-brand-error";
+    return "bg-brand-error hover:bg-brand-error text-xs md:text-md";
   } else if (status === "Published" || status === "Active") {
-    return "bg-brand-success hover:bg-brand-success";
+    return "bg-brand-success hover:bg-brand-success text-xs md:text-md";
   } else {
-    return "bg-brand-secondary-30 hover:bg-brand-secondary-30 text-brand-black-50";
+    return "bg-brand-secondary-30 hover:bg-brand-secondary-30 text-brand-black-50 text-xs md:text-md";
   }
 }
 

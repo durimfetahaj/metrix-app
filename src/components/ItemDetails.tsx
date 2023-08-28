@@ -13,10 +13,12 @@ type Props = {
 
 function ItemDetails({ item, orderDate }: Props) {
   return (
-    <div className="flex flex-col w-full gap-2 ">
-      <div className="flex justify-between">
+    <div className="flex flex-col w-full gap-2 text-xs md:text-base">
+      <div className="flex justify-between text-xs md:text-base">
         {truncateString(item?.name)}
-        <p className="text-brand-black-20">{timestampToDate(orderDate)}</p>
+        <p className="text-brand-black-20 whitespace-nowrap">
+          {timestampToDate(orderDate)}
+        </p>
       </div>
       <div className="flex justify-between">
         <p>

@@ -45,6 +45,8 @@ async function getInventory(): Promise<Product[]> {
   return inventory;
 }
 
+//TODO: fix last item not fully seen on mobile
+
 const page: FC = async () => {
   const [orders, customers, inventory] = await Promise.all([
     getOrders(),
@@ -59,11 +61,11 @@ const page: FC = async () => {
         orders={orders}
         inventory={inventory}
       />
-      <div className="flex gap-5">
-        <div className="h-96 w-3/5 py-4 rounded-lg bg-white">
+      <div className="flex flex-col gap-5 md:flex-row">
+        <div className="h-full py-4 rounded-lg bg-white md:w-[77%] md:h-96">
           <BarChartComponent data={aggregateSalesData(orders)} />
         </div>
-        <div className="w-2/5">
+        <div className="md:w-1/4">
           <RecentOrdersCard orders={GetRecentOrders(orders)} />
         </div>
       </div>

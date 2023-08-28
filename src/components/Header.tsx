@@ -16,10 +16,10 @@ function Header({ isHomepage = false }: Props) {
   const pageTitle = getTitle(usePathname());
 
   return (
-    <div className="flex items-center justify-between h-[80px] w-full  p-3  bg-white">
+    <div className="flex h-20 items-center justify-between px-5 py-4">
       {isHomepage ? <Icons.logo /> : <p>{pageTitle}</p>}
       {status === "authenticated" ? (
-        <div className="mr-5">
+        <div>
           <UserMenu user={session?.user} />
         </div>
       ) : (

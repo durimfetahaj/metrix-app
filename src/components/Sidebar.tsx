@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const sidebarWidth = isOpen ? "w-80" : "w-24";
   const pathName = usePathname();
 
@@ -54,9 +54,9 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="flex h-screen">
+    <nav className="h-screen flex flex-col ">
       <div
-        className={`flex flex-col  bg-white  text-brand-black-50 py-8  ${sidebarWidth} ${
+        className={`flex flex-col h-full  text-brand-black-50 py-8  ${sidebarWidth} ${
           isOpen ? `items-start px-8` : `items-center px-4`
         } ease-in duration-300 `}
       >
@@ -89,19 +89,19 @@ const Sidebar = () => {
             </Link>
           ))}
         </ul>
-        <div className="flex items-end justify-end h-full w-full">
-          {isOpen ? (
-            <Icons.sidebar.close
-              onClick={toggleSidebar}
-              className="cursor-pointer "
-            />
-          ) : (
-            <Icons.sidebar.open
-              onClick={toggleSidebar}
-              className="cursor-pointer"
-            />
-          )}
-        </div>
+      </div>
+      <div className="h-full w-full flex items-center justify-end md:items-end md:mb-5 pr-5">
+        {isOpen ? (
+          <Icons.sidebar.close
+            onClick={toggleSidebar}
+            className="cursor-pointer "
+          />
+        ) : (
+          <Icons.sidebar.open
+            onClick={toggleSidebar}
+            className="cursor-pointer"
+          />
+        )}
       </div>
     </nav>
   );

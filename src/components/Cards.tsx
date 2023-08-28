@@ -278,7 +278,7 @@ function DashboardCards({
 }) {
   return (
     <>
-      <div className="grid grid-cols-4 gap-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         <SummaryCard
           data={[
             {
@@ -355,9 +355,9 @@ function DashboardCards({
 
 function RecentOrdersCard({ orders }: { orders: Order[] }) {
   return (
-    <div className="w-full bg-white rounded-lg p-5">
+    <div className="bg-white rounded-lg p-2 md:p-5">
       {orders?.length === 0 ? (
-        <p className="text-sm text-brand-black-60 ">No recent orders</p>
+        <p className="text-brand-black-60 ">No recent orders</p>
       ) : (
         orders?.map((order: Order) => {
           return (
