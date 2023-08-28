@@ -75,7 +75,7 @@ export function ProductCards({ product, orders }: Props) {
                 .length,
             },
           ]}
-          icon={<Icons.inventory.bag />}
+          icon={<Icons.global.bag />}
         />
         <SummaryCard
           data={[
@@ -90,7 +90,7 @@ export function ProductCards({ product, orders }: Props) {
                 .length,
             },
           ]}
-          icon={<Icons.inventory.bag />}
+          icon={<Icons.global.bag />}
         />
       </div>
     </>

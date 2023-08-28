@@ -17,6 +17,7 @@ import Loader from "@/components/Loader";
 import Modal from "@/components/Modal";
 import useOrders from "@/store/useOrders";
 import { CustomersCards } from "@/components/Cards";
+import { BarChartComponent } from "@/components/BarChart";
 
 const CustomersPage: FC = () => {
   const [isDialogOpen, setDialogOpen] = useState(false);

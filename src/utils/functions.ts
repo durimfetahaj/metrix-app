@@ -1,3 +1,4 @@
+import { Order } from "@/types/types";
 import { DocumentData, Timestamp } from "firebase/firestore";
 import moment from "moment";
 
@@ -56,8 +57,12 @@ export const getActiveProducts = (products: any[]) => {
 
   const activeProducts = products.filter((product) => {
     const lastTimeSold = product?.lastSoldTimestamp
-      ? product.lastSoldTimestamp.toDate()
+      ? new Timestamp(
+          product?.lastSoldTimestamp?.seconds,
+          product?.lastSoldTimestamp?.nanoseconds
+        ).toDate()
       : "N/A";
+
     return new Date(lastTimeSold) >= thirtyDaysAgo;
   });
 
@@ -113,4 +118,51 @@ export function isNewUser(data: any[]) {
   });
 
   return newCustomers.length;
+}
+
+export function aggregateSalesData(orders: any[]) {
+  const monthlySalesData = [
+    { name: "Jan", pv: 0 },
+    { name: "Feb", pv: 0 },
+    { name: "Mar", pv: 0 },
+    { name: "Apr", pv: 0 },
+    { name: "May", pv: 0 },
+    { name: "Jun", pv: 0 },
+  ];
+
+  orders.forEach((order) => {
+    const orderDate = new Timestamp(
+      order?.createdAt?.seconds,
+      order?.createdAt?.nanoseconds
+    ).toDate();
+
+    const monthIndex = orderDate.getMonth();
+
+    if (monthIndex <= 5) {
+      monthlySalesData[monthIndex].pv += order.totalPrice;
+    }
+  });
+
+  return monthlySalesData;
+}
+
+export function GetRecentOrders(orders: Order[]) {
+  const currentDate = new Date();
+  const twentyFourHoursAgo = new Date();
+  twentyFourHoursAgo.setHours(currentDate.getHours() - 24);
+
+  const recentOrders = orders.filter((order) => {
+    const createdAtTimestamp = new Timestamp(
+      order?.createdAt?.seconds,
+      order?.createdAt?.nanoseconds
+    ).toDate();
+    return (
+      createdAtTimestamp >= twentyFourHoursAgo &&
+      createdAtTimestamp <= currentDate
+    );
+  });
+
+  console.log("recentOrders", recentOrders);
+
+  return recentOrders;
 }

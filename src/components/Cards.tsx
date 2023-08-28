@@ -1,13 +1,19 @@
-import { Customer, Order } from "@/types/types";
+import { Customer, Order, OrderItem, Product } from "@/types/types";
 import React from "react";
 import SummaryCard from "./SummaryCard";
 import { Icons } from "./Icons";
 import {
+  aggregateSalesData,
+  getActiveProducts,
   getStatusClassName,
   isNewUser,
   timestampToDate,
 } from "@/utils/functions";
 import { Badge } from "./ui/badge";
+import { BarChartComponent } from "./BarChart";
+import Image from "next/image";
+import ItemDetails from "./ItemDetails";
+import ItemInfoSummary from "./ItemInfoSummary";
 
 function OrdersCards({ orders }: { orders: Order[] }) {
   return (
@@ -25,7 +31,7 @@ function OrdersCards({ orders }: { orders: Order[] }) {
               .length,
           },
         ]}
-        icon={<Icons.inventory.bag />}
+        icon={<Icons.global.bag />}
       />
       <SummaryCard
         data={[
@@ -39,7 +45,7 @@ function OrdersCards({ orders }: { orders: Order[] }) {
             value: orders.filter((order) => order.status === "Returned").length,
           },
         ]}
-        icon={<Icons.inventory.bag />}
+        icon={<Icons.global.bag />}
       />
     </div>
   );
@@ -132,14 +138,14 @@ function CustomersCards({ customers, orders }: CustomersCardsProps) {
             ).length,
           },
         ]}
-        icon={<Icons.customers.customers />}
+        icon={<Icons.global.customers />}
       />
       <SummaryCard
         data={[
           { title: "New Customers", value: isNewUser(customers) },
           { title: "Purchasing", value: orders },
         ]}
-        icon={<Icons.inventory.bag />}
+        icon={<Icons.global.bag />}
       />
     </div>
   );
@@ -237,7 +243,7 @@ function CustomerCards({
               ).length,
             },
           ]}
-          icon={<Icons.inventory.bag />}
+          icon={<Icons.global.bag />}
         />
         <SummaryCard
           data={[
@@ -254,11 +260,140 @@ function CustomerCards({
               ).length,
             },
           ]}
-          icon={<Icons.inventory.bag />}
+          icon={<Icons.global.bag />}
         />
       </div>
     </>
   );
 }
 
-export { CustomersCards, CustomerCards, OrderCards, OrdersCards };
+function DashboardCards({
+  orders,
+  customers,
+  inventory,
+}: {
+  customers: Customer[];
+  orders: Order[];
+  inventory: Product[];
+}) {
+  return (
+    <>
+      <div className="grid grid-cols-4 gap-5 ">
+        <SummaryCard
+          data={[
+            {
+              title: "Sales",
+              value: orders?.length,
+            },
+            {
+              title: "Volume",
+              value: orders.reduce(
+                (total, order) => total + order.items.length,
+                0
+              ),
+            },
+          ]}
+          icon={<Icons.dashboard.sales />}
+        />
+        <SummaryCard
+          data={[
+            {
+              title: "Customers",
+              value: customers?.length,
+            },
+            {
+              title: "Active",
+              value: getActiveProducts(customers).length,
+            },
+          ]}
+          icon={<Icons.global.customers />}
+        />
+        <SummaryCard
+          data={[
+            {
+              title: "All Orders",
+              value: orders?.length,
+            },
+            {
+              title: "Pending",
+              value: orders?.filter(
+                (order: Order) => order.status === "Pending"
+              )?.length,
+            },
+            {
+              title: "Delivered",
+              value: orders?.filter(
+                (order: Order) => order.status === "Delivered"
+              )?.length,
+            },
+          ]}
+          icon={<Icons.global.bag />}
+        />
+        <SummaryCard
+          data={[
+            {
+              title: "All Products",
+              value: inventory?.length,
+            },
+            {
+              title: "Active",
+              value: getActiveProducts(inventory)?.length,
+            },
+            {
+              title: "Delivered",
+              value: orders?.filter(
+                (order: Order) => order.status === "Delivered"
+              )?.length,
+            },
+          ]}
+          icon={<Icons.global.folder />}
+        />
+      </div>
+    </>
+  );
+}
+
+function RecentOrdersCard({ orders }: { orders: Order[] }) {
+  return (
+    <div className="w-full bg-white rounded-lg p-5">
+      {orders?.length === 0 ? (
+        <p className="text-sm text-brand-black-60 ">No recent orders</p>
+      ) : (
+        orders?.map((order: Order) => {
+          return (
+            <div key={order?.id}>
+              <p className=" text-brand-black-60 mb-6">Recent orders</p>
+              {order.items.map((item: OrderItem) => (
+                <div
+                  className="flex gap-3 border-b-2 pb-3 mb-6"
+                  key={item.productId}
+                >
+                  <Image
+                    alt={item.name}
+                    src={
+                      item?.images
+                        ? item.images[0]
+                        : "/images/upload-img-fallback.png"
+                    }
+                    width={50}
+                    height={50}
+                  />
+                  <ItemDetails item={item} orderDate={order?.createdAt} />
+                </div>
+              ))}
+            </div>
+          );
+        })
+      )}
+    </div>
+  );
+}
+
+export {
+  CustomersCards,
+  CustomerCards,
+  OrderCards,
+  OrdersCards,
+  DashboardCards,
+  RecentOrdersCard,
+};

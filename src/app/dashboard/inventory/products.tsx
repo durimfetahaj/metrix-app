@@ -27,7 +27,7 @@ export default function Products({ products }: Props) {
           { title: "All Products", value: products?.length },
           { title: "Active", value: activeProducts },
         ]}
-        icon={<Icons.inventory.folder />}
+        icon={<Icons.global.folder />}
       />
 
       <SummaryCard

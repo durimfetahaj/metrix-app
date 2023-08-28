@@ -256,40 +256,6 @@ export const Icons = {
     </svg>
   ),
   inventory: {
-    folder: (props: LucideProps) => (
-      <svg
-        {...props}
-        width="36"
-        height="36"
-        viewBox="0 0 36 36"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M25.8492 21.11C25.8492 24.0917 24.0917 25.8492 21.11 25.8492H14.625C11.6358 25.8492 9.875 24.0917 9.875 21.11V14.61C9.875 11.6325 10.97 9.875 13.9525 9.875H15.6192C16.2175 9.87583 16.7808 10.1567 17.1392 10.6358L17.9 11.6475C18.26 12.1258 18.8233 12.4075 19.4217 12.4083H21.78C24.7692 12.4083 25.8725 13.93 25.8725 16.9725L25.8492 21.11Z"
-          stroke="black"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M14.2344 20.0524H21.5135"
-          stroke="black"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    ),
     views: (props: LucideProps) => (
       <svg
         {...props}
@@ -376,54 +342,6 @@ export const Icons = {
             />
           </clipPath>
         </defs>
-      </svg>
-    ),
-    bag: (props: LucideProps) => (
-      <svg
-        {...props}
-        width="36"
-        height="36"
-        viewBox="0 0 36 36"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M21.7615 25.9166H14.805C12.2496 25.9166 10.2893 24.9936 10.8461 21.2789L11.4945 16.2446C11.8377 14.391 13.0201 13.6816 14.0574 13.6816H22.5395C23.5921 13.6816 24.7058 14.4444 25.1024 16.2446L25.7508 21.2789C26.2237 24.5741 24.3168 25.9166 21.7615 25.9166Z"
-          stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M21.876 13.4988C21.876 11.5104 20.2641 9.89847 18.2757 9.89847V9.89847C17.3182 9.89441 16.3985 10.2719 15.72 10.9476C15.0416 11.6232 14.6601 12.5413 14.6602 13.4988V13.4988"
-          stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M20.7471 17.2515H20.709"
-          stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M15.8878 17.2515H15.8496"
-          stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
       </svg>
     ),
   },
@@ -536,7 +454,7 @@ export const Icons = {
       </svg>
     ),
   },
-  customers: {
+  global: {
     customers: (props: LucideProps) => (
       <svg
         {...props}
@@ -581,6 +499,127 @@ export const Icons = {
         <path
           d="M23.4961 20.2769C24.7886 20.4694 25.6911 20.9227 25.6911 21.856C25.6911 22.4985 25.2661 22.9152 24.5794 23.176"
           stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ),
+    bag: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#FFCC91"
+          fill-opacity="0.16"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M21.7615 25.9166H14.805C12.2496 25.9166 10.2893 24.9936 10.8461 21.2789L11.4945 16.2446C11.8377 14.391 13.0201 13.6816 14.0574 13.6816H22.5395C23.5921 13.6816 24.7058 14.4444 25.1024 16.2446L25.7508 21.2789C26.2237 24.5741 24.3168 25.9166 21.7615 25.9166Z"
+          stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M21.876 13.4988C21.876 11.5104 20.2641 9.89847 18.2757 9.89847V9.89847C17.3182 9.89441 16.3985 10.2719 15.72 10.9476C15.0416 11.6232 14.6601 12.5413 14.6602 13.4988V13.4988"
+          stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M20.7471 17.2515H20.709"
+          stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M15.8878 17.2515H15.8496"
+          stroke="#130F26"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ),
+    folder: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#FFCC91"
+          fill-opacity="0.16"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M25.8492 21.11C25.8492 24.0917 24.0917 25.8492 21.11 25.8492H14.625C11.6358 25.8492 9.875 24.0917 9.875 21.11V14.61C9.875 11.6325 10.97 9.875 13.9525 9.875H15.6192C16.2175 9.87583 16.7808 10.1567 17.1392 10.6358L17.9 11.6475C18.26 12.1258 18.8233 12.4075 19.4217 12.4083H21.78C24.7692 12.4083 25.8725 13.93 25.8725 16.9725L25.8492 21.11Z"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M14.2344 20.0524H21.5135"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ),
+  },
+
+  dashboard: {
+    sales: (props: LucideProps) => (
+      <svg
+        {...props}
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          width="36"
+          height="36"
+          rx="8"
+          fill="#5570F1"
+          fill-opacity="0.12"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M22.3986 19.5743C22.9609 19.5743 23.4328 20.0384 23.3468 20.5936C22.8424 23.8603 20.0459 26.2857 16.6731 26.2857C12.9416 26.2857 9.91699 23.2612 9.91699 19.5305C9.91699 16.4568 12.2521 13.5936 14.881 12.9462C15.4459 12.8068 16.0249 13.2041 16.0249 13.7857C16.0249 17.7261 16.1573 18.7454 16.9056 19.2998C17.6538 19.8541 18.5337 19.5743 22.3986 19.5743Z"
+          stroke="#5570F1"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M26.0778 16.293C26.1225 13.7614 23.0128 9.68072 19.2234 9.75089C18.9286 9.75616 18.6927 10.0018 18.6795 10.2956C18.5839 12.3772 18.7129 15.0746 18.7848 16.2974C18.8067 16.6781 19.1058 16.9772 19.4857 16.9991C20.7427 17.0711 23.5383 17.1693 25.59 16.8588C25.869 16.8167 26.0734 16.5746 26.0778 16.293Z"
+          stroke="#5570F1"
           stroke-width="1.5"
           stroke-linecap="round"
           stroke-linejoin="round"
