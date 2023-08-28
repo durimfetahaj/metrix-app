@@ -55,7 +55,7 @@ const useCustomers = create<customersStoreState>((set, get) => ({
         }));
         if (product) return product as Product;
       } else {
-        console.log("Product not found!");
+        // console.log("Product not found!");
       }
     } catch (error) {
       throw new Error(error as any);
