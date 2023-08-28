@@ -39,12 +39,12 @@ const Sidebar = () => {
       label: "Inventory",
       icon: <Icons.sidebar.inventory />,
     },
-    {
-      id: 4,
-      href: "/dashboard/conversations",
-      label: "Conversations",
-      icon: <Icons.sidebar.conversations />,
-    },
+    // {
+    //   id: 4,
+    //   href: "/dashboard/conversations",
+    //   label: "Conversations",
+    //   icon: <Icons.sidebar.conversations />,
+    // },
     {
       id: 5,
       href: "/dashboard/settings",
