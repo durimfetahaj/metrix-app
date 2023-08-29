@@ -3,21 +3,18 @@ import React from "react";
 import SummaryCard from "./SummaryCard";
 import { Icons } from "./Icons";
 import {
-  aggregateSalesData,
   getActiveProducts,
   getStatusClassName,
   isNewUser,
   timestampToDate,
 } from "@/utils/functions";
 import { Badge } from "./ui/badge";
-import { BarChartComponent } from "./BarChart";
 import Image from "next/image";
 import ItemDetails from "./ItemDetails";
-import ItemInfoSummary from "./ItemInfoSummary";
 
 function OrdersCards({ orders }: { orders: Order[] }) {
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
       <SummaryCard
         data={[
           { title: "All Orders", value: orders.length },
@@ -53,7 +50,7 @@ function OrdersCards({ orders }: { orders: Order[] }) {
 
 function OrderCards({ order }: { order: Order }) {
   return (
-    <div className="grid grid-cols-3 gap-5 ">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
       <SummaryCard
         data={[
           {
@@ -66,10 +63,10 @@ function OrderCards({ order }: { order: Order }) {
           },
         ]}
         icon={
-          <div className="flex justify-between gap-6 text-sm">
+          <div className="flex flex-col gap-4 text-sm md:flex-row md:justify-between md:gap-6">
             <Icons.orders.profile />
             <div>
-              <p className="text-brand-black-30">{order?.customer?.name}</p>
+              <p className="text-brand-black-30 ">{order?.customer?.name}</p>
               <p className="text-brand-black-30">
                 Customer since{" "}
                 <span className="text-black">
@@ -78,8 +75,8 @@ function OrderCards({ order }: { order: Order }) {
               </p>
             </div>
             <div>
-              <Badge className={getStatusClassName(order?.status)}>
-                {order?.status}
+              <Badge className={getStatusClassName(order?.customer?.status)}>
+                {order?.customer?.status}
               </Badge>
             </div>
           </div>
@@ -102,7 +99,7 @@ function OrderCards({ order }: { order: Order }) {
         data={[
           {
             title: "Payment Method",
-            value: order?.paymentMethod.cardType,
+            value: order?.paymentMethod?.cardType,
           },
           {
             title: "Order Type",
@@ -288,7 +285,7 @@ function DashboardCards({
             {
               title: "Volume",
               value: orders.reduce(
-                (total, order) => total + order.items.length,
+                (total, order) => total + order.items?.length,
                 0
               ),
             },

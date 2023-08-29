@@ -54,7 +54,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="h-screen flex flex-col ">
+    <nav className="h-screen flex flex-col">
       <div
         className={`flex flex-col h-full  text-brand-black-50 py-8  ${sidebarWidth} ${
           isOpen ? `items-start px-8` : `items-center px-4`

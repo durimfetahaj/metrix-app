@@ -8,7 +8,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
       <div className="w-screen">
         <Header />
         <div className="bg-brand-background p-4 h-screen overflow-x-auto">
-          {children}
+          <div className="max-w-screen-xl">{children}</div>
         </div>
       </div>
     </div>

@@ -3,8 +3,9 @@ import { db } from "@/firebase/firebaseConfig";
 import { Order, orderStatusOptions } from "@/types/types";
 import { collection, getDocs } from "firebase/firestore";
 import { FC } from "react";
-import { columns } from "./columns";
+import { columns, mobileColumns } from "./columns";
 import { OrdersCards } from "@/components/Cards";
+import MobileOrderCard from "@/components/MobileTableCard";
 
 async function getData(): Promise<Order[]> {
   const orders: Order[] = [];
@@ -19,26 +20,26 @@ async function getData(): Promise<Order[]> {
   return orders;
 }
 
-//TODO: fix search filter
-
 const page: FC = async () => {
   const orders = await getData();
 
   return (
-    <div className="max-w-7xl">
-      <div className="flex flex-col gap-5">
-        <p>Orders Summary</p>
-        <OrdersCards orders={orders} />
-        <DataTable
-          columns={columns}
-          data={orders}
-          options={orderStatusOptions.map((status) => ({
-            value: status,
-            label: status,
-          }))}
-          placeholder="Search for orders..."
-        />
+    <div className="flex flex-col gap-5 ">
+      <p>Orders Summary</p>
+      <OrdersCards orders={orders} />
+      <div className="sm:hidden h-screen ">
+        <p>Orders List</p>
+        <MobileOrderCard data={orders} columns={mobileColumns} href="orders" />
       </div>
+      <DataTable
+        columns={columns}
+        data={orders}
+        options={orderStatusOptions.map((status) => ({
+          value: status,
+          label: status,
+        }))}
+        placeholder="Search for orders..."
+      />
     </div>
   );
 };

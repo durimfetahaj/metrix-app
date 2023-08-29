@@ -37,11 +37,7 @@ export function DataTableFacetedFilter<TData, TValue>({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-8 border-dashed flex gap-2  items-center"
-        >
+        <div className="h-8 border-dashed flex gap-2  items-center px-3 rounded-md border border-input">
           <Icons.PlusCircleIcon className="h-4 w-4" />
           {title}
           {selectedValues?.size > 0 && (
@@ -76,7 +72,7 @@ export function DataTableFacetedFilter<TData, TValue>({
               </div>
             </>
           )}
-        </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {options.map((option) => {

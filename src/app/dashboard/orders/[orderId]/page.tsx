@@ -4,8 +4,9 @@ import { doc, getDoc } from "firebase/firestore";
 import ItemInfoSummary from "@/components/ItemInfoSummary";
 import { timestampToDate } from "@/utils/functions";
 import { DataTable } from "@/components/DataTable";
-import { columns } from "./columns";
+import { columns, mobileColumns } from "./columns";
 import { OrderCards } from "@/components/Cards";
+import MobileTableCard from "@/components/MobileTableCard";
 
 async function getData(orderId: string): Promise<Order | null> {
   const orderDocRef = doc(db, "orders", orderId);
@@ -37,31 +38,33 @@ const page = async ({ params }: Props) => {
   }
 
   return (
-    <div className="max-w-7xl">
-      <div className="flex flex-col gap-5">
-        <ItemInfoSummary
-          firstItem={{ title: "Order Number", value: order?.orderNumber }}
-          secondItem={{
-            title: "Order Date",
-            value: timestampToDate(order?.createdAt),
-          }}
-        >
-          <p>
-            Tracking Id {""}
-            <span className="text-brand-black-30">{order?.trackingId}</span>
-          </p>
-        </ItemInfoSummary>
-        <OrderCards order={order} />
-        <DataTable
-          columns={columns}
-          data={order.items}
-          options={orderItemStatusOptions.map((status) => ({
-            value: status,
-            label: status,
-          }))}
-          placeholder="Search for items..."
-        />
+    <div className="flex flex-col gap-5 ">
+      <ItemInfoSummary
+        firstItem={{ title: "Order Number", value: order?.orderNumber }}
+        secondItem={{
+          title: "Order Date",
+          value: timestampToDate(order?.createdAt),
+        }}
+      >
+        <p>
+          Tracking Id {""}
+          <span className="text-brand-black-30">{order?.trackingId}</span>
+        </p>
+      </ItemInfoSummary>
+      <OrderCards order={order} />
+      <div className="sm:hidden h-screen">
+        <p>Products List</p>
+        <MobileTableCard data={order?.items} columns={mobileColumns} />
       </div>
+      <DataTable
+        columns={columns}
+        data={order.items}
+        options={orderItemStatusOptions.map((status) => ({
+          value: status,
+          label: status,
+        }))}
+        placeholder="Search for items..."
+      />
     </div>
   );
 };

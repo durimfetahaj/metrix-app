@@ -2,13 +2,50 @@
 
 import { Badge } from "@/components/ui/badge";
 import { OrderItem } from "@/types/types";
-import { getStatusClassName } from "@/utils/functions";
+import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 
+interface Column<T> {
+  header: string;
+  accessor: keyof T | ((data: T) => React.ReactNode);
+  render?: (data: any) => React.ReactNode;
+}
+
+export const mobileColumns: Column<OrderItem>[] = [
+  { header: "Product", accessor: (item: OrderItem) => item?.name },
+  {
+    header: "Price",
+    accessor: (item: OrderItem) =>
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "EUR",
+      }).format(item.price),
+  },
+  {
+    header: "Quantity",
+    accessor: "quantity",
+  },
+  {
+    header: "Order Total",
+    accessor: (item: OrderItem) =>
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "EUR",
+      }).format(item.totalPrice),
+  },
+  {
+    header: "Status",
+    accessor: "status",
+    render: (status: string) => {
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
+    },
+  },
+];
+
 export const columns: ColumnDef<OrderItem>[] = [
   {
-    accessorKey: "productName",
+    accessorKey: "name",
     header: "Product Name",
     cell: ({ row }) => {
       const product = row?.original;

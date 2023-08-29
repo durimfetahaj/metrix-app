@@ -1,13 +1,39 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
+import { Order } from "@/types/types";
 import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
+
+interface Column<T> {
+  header: string;
+  accessor: keyof T | ((data: T) => React.ReactNode);
+  render?: (data: string) => React.ReactNode;
+}
+
+export const mobileColumns: Column<Order>[] = [
+  { header: "Customer", accessor: (order: Order) => order.customer.name },
+  {
+    header: "Order Date",
+    accessor: (order: Order) => timestampToDate(order.createdAt),
+  },
+  { header: "Order Type", accessor: "type" },
+  { header: "Tracking Id", accessor: "trackingId" },
+  { header: "Order Total", accessor: "totalPrice" },
+  {
+    header: "Status",
+    accessor: "status",
+    render: (status: string) => {
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
+    },
+  },
+];
 
 export const columns: ColumnDef<any>[] = [
   {
     accessorKey: "name",
     header: "Customer Name",
+    accessorFn: (order) => order?.customer?.name,
     cell: ({ row }) => {
       const order = row.original;
       return (
