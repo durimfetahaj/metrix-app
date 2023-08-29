@@ -16,6 +16,8 @@ import Image from "next/image";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { getStatusClassName } from "@/utils/functions";
 
+//TODO: uncomment deleteModal
+
 export const columns: ColumnDef<any>[] = [
   {
     accessorKey: "name",

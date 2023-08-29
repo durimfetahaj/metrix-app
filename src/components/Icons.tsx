@@ -67,35 +67,35 @@ export const Icons = {
         height="36"
         rx="8"
         fill="#FFCC91"
-        fill-opacity="0.16"
+        fillOpacity="0.16"
       />
       <path
         d="M22.8388 26.1642V12.5464"
         stroke="#130F26"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M26.9163 22.0684L22.8385 26.165L18.7607 22.0684"
         stroke="#130F26"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12.911 9.83301V23.4508"
         stroke="#130F26"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.83301 13.9292L12.9108 9.83252L16.9886 13.9292"
         stroke="#130F26"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
@@ -265,27 +265,21 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="36" height="36" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <g clip-path="url(#clip0_826_3947)">
           <path
             d="M8.83301 18.0002C8.83301 18.0002 12.1663 11.3335 17.9997 11.3335C23.833 11.3335 27.1663 18.0002 27.1663 18.0002C27.1663 18.0002 23.833 24.6668 17.9997 24.6668C12.1663 24.6668 8.83301 18.0002 8.83301 18.0002Z"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M18 20.5C19.3807 20.5 20.5 19.3807 20.5 18C20.5 16.6193 19.3807 15.5 18 15.5C16.6193 15.5 15.5 16.6193 15.5 18C15.5 19.3807 16.6193 20.5 18 20.5Z"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <defs>
@@ -309,27 +303,21 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#5570F1"
-          fill-opacity="0.08"
-        />
+        <rect width="36" height="36" rx="8" fill="#5570F1" fillOpacity="0.08" />
         <g clip-path="url(#clip0_826_3932)">
           <path
             d="M25.6747 21.2417C25.1445 22.4955 24.3153 23.6002 23.2596 24.4595C22.2038 25.3187 20.9537 25.9063 19.6184 26.1707C18.2831 26.4352 16.9034 26.3685 15.5998 25.9766C14.2962 25.5846 13.1085 24.8793 12.1405 23.9223C11.1725 22.9653 10.4537 21.7857 10.0469 20.4867C9.64006 19.1877 9.55765 17.8088 9.80685 16.4706C10.056 15.1324 10.6293 13.8756 11.4764 12.8101C12.3235 11.7446 13.4188 10.9028 14.6664 10.3584"
             stroke="#5570F1"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M26.3333 17.9998C26.3333 16.9055 26.1178 15.8219 25.699 14.8108C25.2802 13.7998 24.6664 12.8811 23.8926 12.1073C23.1187 11.3335 22.2001 10.7196 21.189 10.3008C20.178 9.88205 19.0943 9.6665 18 9.6665V17.9998H26.3333Z"
             stroke="#5570F1"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <defs>
@@ -355,13 +343,7 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="45"
-          height="45"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="45" height="45" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <path
           d="M22.9958 26.7037C17.964 26.7037 13.666 27.4971 13.666 30.6704C13.666 33.8449 17.9372 34.6662 22.9958 34.6662C28.0277 34.6662 32.3257 33.8741 32.3257 30.6996C32.3257 27.5251 28.0557 26.7037 22.9958 26.7037Z"
           fill="#130F26"
@@ -382,30 +364,24 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="36" height="36" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M20.0827 16.7504C20.0827 15.5993 19.15 14.6666 17.9998 14.6666C16.8487 14.6666 15.916 15.5993 15.916 16.7504C15.916 17.9006 16.8487 18.8333 17.9998 18.8333C19.15 18.8333 20.0827 17.9006 20.0827 16.7504Z"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M17.9996 25.5C17.0009 25.5 11.75 21.2486 11.75 16.8027C11.75 13.3222 14.5476 10.5 17.9996 10.5C21.4516 10.5 24.25 13.3222 24.25 16.8027C24.25 21.2486 18.9983 25.5 17.9996 25.5Z"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -418,27 +394,21 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="36" height="36" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <g clip-path="url(#clip0_64_24825)">
           <path
             d="M25.5006 11.3334H10.5007C9.58018 11.3334 8.83398 12.0796 8.83398 13V23C8.83398 23.9205 9.58018 24.6667 10.5007 24.6667H25.5006C26.4211 24.6667 27.1673 23.9205 27.1673 23V13C27.1673 12.0796 26.4211 11.3334 25.5006 11.3334Z"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M8.83398 16.3334H27.1673"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <defs>
@@ -464,44 +434,38 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="36" height="36" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M15.9927 20.6724C19.0668 20.6724 21.6943 21.1382 21.6943 22.999C21.6943 24.8599 19.0843 25.339 15.9927 25.339C12.9177 25.339 10.291 24.8774 10.291 23.0157C10.291 21.154 12.9002 20.6724 15.9927 20.6724Z"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M15.9929 18.0163C13.9746 18.0163 12.3379 16.3805 12.3379 14.3622C12.3379 12.3438 13.9746 10.708 15.9929 10.708C18.0104 10.708 19.6471 12.3438 19.6471 14.3622C19.6546 16.373 18.0296 18.0088 16.0187 18.0163H15.9929Z"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M21.7354 17.0679C23.0695 16.8804 24.097 15.7354 24.0995 14.3496C24.0995 12.9837 23.1037 11.8504 21.7979 11.6362"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M23.4961 20.2769C24.7886 20.4694 25.6911 20.9227 25.6911 21.856C25.6911 22.4985 25.2661 22.9152 24.5794 23.176"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -514,42 +478,36 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="36" height="36" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M21.7615 25.9166H14.805C12.2496 25.9166 10.2893 24.9936 10.8461 21.2789L11.4945 16.2446C11.8377 14.391 13.0201 13.6816 14.0574 13.6816H22.5395C23.5921 13.6816 24.7058 14.4444 25.1024 16.2446L25.7508 21.2789C26.2237 24.5741 24.3168 25.9166 21.7615 25.9166Z"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M21.876 13.4988C21.876 11.5104 20.2641 9.89847 18.2757 9.89847V9.89847C17.3182 9.89441 16.3985 10.2719 15.72 10.9476C15.0416 11.6232 14.6601 12.5413 14.6602 13.4988V13.4988"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M20.7471 17.2515H20.709"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M15.8878 17.2515H15.8496"
           stroke="#130F26"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -562,28 +520,22 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#FFCC91"
-          fill-opacity="0.16"
-        />
+        <rect width="36" height="36" rx="8" fill="#FFCC91" fillOpacity="0.16" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M25.8492 21.11C25.8492 24.0917 24.0917 25.8492 21.11 25.8492H14.625C11.6358 25.8492 9.875 24.0917 9.875 21.11V14.61C9.875 11.6325 10.97 9.875 13.9525 9.875H15.6192C16.2175 9.87583 16.7808 10.1567 17.1392 10.6358L17.9 11.6475C18.26 12.1258 18.8233 12.4075 19.4217 12.4083H21.78C24.7692 12.4083 25.8725 13.93 25.8725 16.9725L25.8492 21.11Z"
           stroke="black"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M14.2344 20.0524H21.5135"
           stroke="black"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -599,30 +551,24 @@ export const Icons = {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="36"
-          height="36"
-          rx="8"
-          fill="#5570F1"
-          fill-opacity="0.12"
-        />
+        <rect width="36" height="36" rx="8" fill="#5570F1" fillOpacity="0.12" />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M22.3986 19.5743C22.9609 19.5743 23.4328 20.0384 23.3468 20.5936C22.8424 23.8603 20.0459 26.2857 16.6731 26.2857C12.9416 26.2857 9.91699 23.2612 9.91699 19.5305C9.91699 16.4568 12.2521 13.5936 14.881 12.9462C15.4459 12.8068 16.0249 13.2041 16.0249 13.7857C16.0249 17.7261 16.1573 18.7454 16.9056 19.2998C17.6538 19.8541 18.5337 19.5743 22.3986 19.5743Z"
           stroke="#5570F1"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M26.0778 16.293C26.1225 13.7614 23.0128 9.68072 19.2234 9.75089C18.9286 9.75616 18.6927 10.0018 18.6795 10.2956C18.5839 12.3772 18.7129 15.0746 18.7848 16.2974C18.8067 16.6781 19.1058 16.9772 19.4857 16.9991C20.7427 17.0711 23.5383 17.1693 25.59 16.8588C25.869 16.8167 26.0734 16.5746 26.0778 16.293Z"
           stroke="#5570F1"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
