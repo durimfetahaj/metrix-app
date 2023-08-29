@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
-import DeleteModal from "./DeleteModal";
+// import DeleteModal from "./DeleteModal";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { getStatusClassName } from "@/utils/functions";
 
@@ -116,7 +116,7 @@ export const columns: ColumnDef<any>[] = [
                 <DropdownMenuItem>Delete product</DropdownMenuItem>
               </AlertDialogTrigger>
             </DropdownMenuContent>
-            <DeleteModal productId={product?.id} productName={product?.name} />
+            {/* <DeleteModal productId={product?.id} productName={product?.name} /> */}
           </DropdownMenu>
         </AlertDialog>
       );
