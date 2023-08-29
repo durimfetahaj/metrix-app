@@ -8,7 +8,7 @@ type Props = {
 function Loader({ variant = "page" }: Props) {
   if (variant === "form") {
     return (
-      <div className="h-full w-full items-center justify-center flex">
+      <div className="h-screen w-full items-center justify-center flex">
         <Icons.spinner />
       </div>
     );

@@ -119,7 +119,7 @@ type CustomersCardsProps = {
 
 function CustomersCards({ customers, orders }: CustomersCardsProps) {
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
       <SummaryCard
         data={[
           { title: "All Customers", value: customers.length },
@@ -157,7 +157,7 @@ function CustomerCards({
 }) {
   return (
     <>
-      <div className="grid grid-cols-3 gap-5 ">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <SummaryCard
           data={[
             {
@@ -170,7 +170,7 @@ function CustomerCards({
             },
           ]}
           icon={
-            <div className="flex justify-between gap-6 text-sm">
+            <div className="flex flex-col gap-4 text-sm md:flex-row md:justify-between md:gap-6">
               <Icons.orders.profile />
               <div>
                 <p className="text-brand-black-30">{customer?.name}</p>
@@ -220,7 +220,7 @@ function CustomerCards({
           icon={<Icons.inventory.orders />}
         />
       </div>
-      <div className="grid grid-cols-2 gap-5 ">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <SummaryCard
           data={[
             {

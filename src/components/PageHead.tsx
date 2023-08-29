@@ -6,7 +6,7 @@ type Props = {
 function PageHead({ text, children }: Props) {
   return (
     <div className="flex justify-between mb-5">
-      <p className="text-xl">{text}</p>
+      <p className="">{text}</p>
       {children}
     </div>
   );

@@ -5,6 +5,42 @@ import { Order } from "@/types/types";
 import { getStatusClassName, timestampToDate } from "@/utils/functions";
 import { ColumnDef } from "@tanstack/react-table";
 
+interface Column<T> {
+  header: string;
+  accessor: keyof T | ((data: T) => React.ReactNode);
+  render?: (data: string) => React.ReactNode;
+}
+
+export const mobileColumns: Column<Order>[] = [
+  {
+    header: "Order Date",
+    accessor: (order: Order) => timestampToDate(order?.createdAt),
+  },
+  {
+    header: "Order Type",
+    accessor: "type",
+  },
+  {
+    header: "Tracking ID",
+    accessor: "trackingId",
+  },
+  {
+    header: "Order Total",
+    accessor: (order: Order) =>
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "EUR",
+      }).format(order.totalPrice),
+  },
+  {
+    header: "Status",
+    accessor: "status",
+    render: (status: string) => {
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
+    },
+  },
+];
+
 export const columns: ColumnDef<Order>[] = [
   {
     accessorKey: "createdAt",

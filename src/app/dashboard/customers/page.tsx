@@ -3,7 +3,7 @@
 import { DataTable } from "@/components/DataTable";
 import { Customer } from "@/types/types";
 import { FC, useEffect, useState } from "react";
-import { columns } from "./columns";
+import { columns, mobileColumns } from "./columns";
 import PageHead from "@/components/PageHead";
 import { Icons } from "@/components/Icons";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
@@ -18,6 +18,7 @@ import Modal from "@/components/Modal";
 import useOrders from "@/store/useOrders";
 import { CustomersCards } from "@/components/Cards";
 import { BarChartComponent } from "@/components/BarChart";
+import MobileTableCard from "@/components/MobileTableCard";
 
 const CustomersPage: FC = () => {
   const [isDialogOpen, setDialogOpen] = useState(false);
@@ -48,63 +49,67 @@ const CustomersPage: FC = () => {
   }
 
   return (
-    <div className="max-w-7xl">
-      <div className="flex flex-col gap-5">
-        <AlertDialog open={isDialogOpen} onOpenChange={setDialogOpen}>
-          <PageHead text="Customers Summary">
-            <AlertDialogTrigger asChild>
-              <Button>
-                <Icons.plus /> Add a New Customer
-              </Button>
-            </AlertDialogTrigger>
-          </PageHead>
+    <div className="flex flex-col gap-5">
+      <AlertDialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+        <PageHead text="Customers Summary">
+          <AlertDialogTrigger asChild>
+            <Button>
+              <Icons.plus /> Add a New Customer
+            </Button>
+          </AlertDialogTrigger>
+        </PageHead>
 
-          <Formik
-            initialValues={{
-              name: "",
-              email: "",
-              phone: "",
-              createdAt: new Date(),
-              orders: [],
-              status: "Active",
-            }}
-            validationSchema={customer}
-            onSubmit={handleSubmit}
-          >
-            {({ handleSubmit, submitForm }) => (
-              <form onSubmit={handleSubmit} className="max-w-full ">
-                <Modal
-                  title="Add New Customer"
-                  description="Customer Information"
-                  actionText="Add"
-                  onSubmit={submitForm} // Pass Formik's submitForm function
-                >
-                  <div className="flex flex-col ">
-                    <Input name="name" placeholder="Customer Name" />
-                    <Input name="email" placeholder="Customer E-mail" />
-                    <Input name="phone" placeholder="Customer Phone" />
-                  </div>
-                </Modal>
-              </form>
-            )}
-          </Formik>
-        </AlertDialog>
-        <CustomersCards
-          customers={customers as Customer[]}
-          orders={
-            orders?.filter((order) => order?.status === "Delivered").length
-          }
-        />
-        <DataTable
-          columns={columns}
-          data={customers}
-          options={[
-            { value: "Active", label: "Active" },
-            { value: "Inactive", label: "Inactive" },
-          ]}
-          placeholder="Search for products..."
+        <Formik
+          initialValues={{
+            name: "",
+            email: "",
+            phone: "",
+            createdAt: new Date(),
+            orders: [],
+            status: "Active",
+          }}
+          validationSchema={customer}
+          onSubmit={handleSubmit}
+        >
+          {({ handleSubmit, submitForm }) => (
+            <form onSubmit={handleSubmit} className="max-w-full ">
+              <Modal
+                title="Add New Customer"
+                description="Customer Information"
+                actionText="Add"
+                onSubmit={submitForm} // Pass Formik's submitForm function
+              >
+                <div className="flex flex-col ">
+                  <Input name="name" placeholder="Customer Name" />
+                  <Input name="email" placeholder="Customer E-mail" />
+                  <Input name="phone" placeholder="Customer Phone" />
+                </div>
+              </Modal>
+            </form>
+          )}
+        </Formik>
+      </AlertDialog>
+      <CustomersCards
+        customers={customers as Customer[]}
+        orders={orders?.filter((order) => order?.status === "Delivered").length}
+      />
+      <div className="sm:hidden h-screen ">
+        <p>Orders List</p>
+        <MobileTableCard
+          data={customers as Customer[]}
+          columns={mobileColumns}
+          href="customers"
         />
       </div>
+      <DataTable
+        columns={columns}
+        data={customers}
+        options={[
+          { value: "Active", label: "Active" },
+          { value: "Inactive", label: "Inactive" },
+        ]}
+        placeholder="Search for products..."
+      />
     </div>
   );
 };

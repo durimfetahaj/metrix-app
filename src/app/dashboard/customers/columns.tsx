@@ -1,6 +1,5 @@
 "use client";
 
-import Modal from "@/components/Modal";
 import { AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,6 +18,29 @@ import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import DeleteModal from "./DeleteModal";
 import { Customer } from "@/types/types";
+
+interface Column<T> {
+  header: string;
+  accessor: keyof T | ((data: T) => React.ReactNode);
+  render?: (data: string) => React.ReactNode;
+}
+
+export const mobileColumns: Column<Customer>[] = [
+  { header: "Customer", accessor: (customer: Customer) => customer.name },
+  { header: "E-mail", accessor: (customer: Customer) => customer.email },
+  { header: "Phone", accessor: (customer: Customer) => customer.phone },
+  {
+    header: "Orders",
+    accessor: (customer: Customer) => customer.orders.length,
+  },
+  {
+    header: "Status",
+    accessor: "status",
+    render: (status: string) => {
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
+    },
+  },
+];
 
 export const columns: ColumnDef<any>[] = [
   {
