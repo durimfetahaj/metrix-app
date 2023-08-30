@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
 import useProducts from "@/store/useProducts";
 import Loader from "@/components/Loader";
-import { Order, Product } from "@/types/types";
+import { Order, Product, orderStatusOptions } from "@/types/types";
 import { timestampToDate, truncateString } from "@/utils/functions";
 import { DataTable } from "@/components/DataTable";
 import { columns, mobileColumns } from "./columns";
@@ -62,17 +62,11 @@ export default function ProductPage({ params }: Props) {
       <DataTable
         columns={columns}
         data={orders}
-        placeholder="Filter orders..."
-        options={[
-          {
-            value: "Pending",
-            label: "Pending",
-          },
-          {
-            value: "Completed",
-            label: "Completed",
-          },
-        ]}
+        placeholder=""
+        options={orderStatusOptions.map((status) => ({
+          value: status,
+          label: status,
+        }))}
       />
     </div>
   );

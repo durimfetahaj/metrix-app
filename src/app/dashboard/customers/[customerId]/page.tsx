@@ -76,7 +76,7 @@ const page = async ({ params }: Props) => {
           value: status,
           label: status,
         }))}
-        placeholder="Search for items..."
+        placeholder=""
       />
     </div>
   );

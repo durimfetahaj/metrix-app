@@ -23,14 +23,16 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex flex-center space-x-2 m-4">
-      <input
-        placeholder={placeholder}
-        value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn("name")?.setFilterValue(event.target.value)
-        }
-        className="h-8 w-[150px] lg:w-[250px] border rounded-md p-4"
-      />
+      {placeholder.length > 0 && (
+        <input
+          placeholder={placeholder}
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("name")?.setFilterValue(event.target.value)
+          }
+          className="h-8 w-[150px] lg:w-[250px] border rounded-md p-4"
+        />
+      )}
       {table.getColumn("status") && (
         <DataTableFacetedFilter
           column={table.getColumn("status")}

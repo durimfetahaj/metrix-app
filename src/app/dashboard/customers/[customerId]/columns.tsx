@@ -43,7 +43,7 @@ export const mobileColumns: Column<Order>[] = [
 
 export const columns: ColumnDef<Order>[] = [
   {
-    accessorKey: "createdAt",
+    accessorKey: "name",
     header: "Order Date",
     cell: ({ row }) => {
       const createdAt = row.original?.createdAt;

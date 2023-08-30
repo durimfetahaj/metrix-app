@@ -54,8 +54,12 @@ export const columns: ColumnDef<OrderItem>[] = [
           <Image
             height={50}
             width={50}
-            alt={product?.name}
-            src={product?.images[0]}
+            alt={product?.name ? product.name : "no-image"}
+            src={
+              product?.images
+                ? product.images[0]
+                : "/images/upload-img-fallback.png"
+            }
           />
           {product?.name}
         </div>
@@ -66,7 +70,9 @@ export const columns: ColumnDef<OrderItem>[] = [
     accessorKey: "price",
     header: "Unit Price",
     cell: ({ row }) => {
-      const sellingPrice = parseFloat(row?.original?.price.toString());
+      const sellingPrice = row?.original?.price
+        ? parseFloat(row?.original?.price.toString())
+        : 0;
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
@@ -79,7 +85,7 @@ export const columns: ColumnDef<OrderItem>[] = [
     accessorKey: "quantity",
     header: "Quantity",
     cell: ({ row }) => {
-      const quantity = row.original?.quantity;
+      const quantity = row.original?.quantity ? row?.original?.quantity : "N/A";
       return <p>{quantity}</p>;
     },
   },
@@ -87,9 +93,10 @@ export const columns: ColumnDef<OrderItem>[] = [
     accessorKey: "total",
     header: "Order Total",
     cell: ({ row }) => {
-      const sellingPrice =
-        parseFloat(row?.original?.price.toString()) *
-        parseFloat(row?.original?.quantity.toString());
+      const sellingPrice = row?.original?.price
+        ? parseFloat(row?.original?.price.toString()) *
+          parseFloat(row?.original?.quantity.toString())
+        : 0;
       const total = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
@@ -102,7 +109,7 @@ export const columns: ColumnDef<OrderItem>[] = [
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
-      const status = row.original?.status;
+      const status = row.original?.status ? row.original?.status : "N/A";
       return <Badge className={getStatusClassName(status)}>{status}</Badge>;
     },
     filterFn: (row, id, value) => {
