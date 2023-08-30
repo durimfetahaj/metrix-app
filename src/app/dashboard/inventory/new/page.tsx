@@ -23,7 +23,7 @@ function Page() {
   // TODO: add additional images feature
 
   return (
-    <div className="max-w-[900px]">
+    <div>
       <Formik
         initialValues={{
           name: "",
@@ -58,10 +58,12 @@ function Page() {
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
             <PageHead text="New Inventory Item">
-              <Button type="submit">Save</Button>
+              <Button type="submit" className="mb-5">
+                Save
+              </Button>
             </PageHead>
-            <div className="flex gap-10 p-8 rounded-xl bg-white">
-              <div className="flex flex-col w-1/2">
+            <div className="flex flex-col p-8 rounded-xl bg-white lg:flex-row lg:gap-10">
+              <div className="flex flex-col lg:w-1/2">
                 <Input name="name" placeholder="Product Name" />
                 <Select
                   name="category"
@@ -75,27 +77,23 @@ function Page() {
                   ]}
                   placeholder="Product Category"
                 />
-                <div className="flex mt-8 gap-3">
-                  <div className="flex-1">
-                    <Input
-                      name="sellingPrice"
-                      placeholder="Selling Price"
-                      type="number"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <Input
-                      type="number"
-                      name="costPrice"
-                      placeholder="Cost Price"
-                    />
-                  </div>
+                <div className="">
+                  <Input
+                    name="sellingPrice"
+                    placeholder="Selling Price"
+                    type="number"
+                  />
+                  <Input
+                    type="number"
+                    name="costPrice"
+                    placeholder="Cost Price"
+                  />
                 </div>
                 <Input name="stock" placeholder="Quantity in stock" />
 
                 <div className="flex justify-between ">
                   <label
-                    className="text-brand-black-30 font-medium"
+                    className="hidden md:block text-brand-black-30 font-medium"
                     htmlFor="status"
                   >
                     Status
@@ -111,7 +109,7 @@ function Page() {
                 </div>
                 <div className="flex justify-between">
                   <label
-                    className="text-brand-black-30 font-medium"
+                    className="text-brand-black-30 font-medium hidden md:block"
                     htmlFor="hasExpiryDate"
                   >
                     Expiry Date
@@ -138,8 +136,9 @@ function Page() {
                   value={formik.values.description}
                 />
               </div>
-
-              <ImageUploader size="lg" name="images" />
+              <div className="xl:flex xl:w-1/2">
+                <ImageUploader name="images" size="lg" />
+              </div>
             </div>
           </form>
         )}
