@@ -28,6 +28,8 @@ export default function ProductPage({ params }: Props) {
     return <Loader variant="form" />;
   }
 
+  //TODO: Check responsiveness on production mobile
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col-reverse justify-between gap-4 md:flex-row">
