@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
 import useProducts from "@/store/useProducts";
@@ -6,9 +7,10 @@ import Loader from "@/components/Loader";
 import { Order, Product } from "@/types/types";
 import { timestampToDate, truncateString } from "@/utils/functions";
 import { DataTable } from "@/components/DataTable";
-import { columns } from "./columns";
+import { columns, mobileColumns } from "./columns";
 import useOrders from "@/store/useOrders";
 import { ProductCards } from "@/components/ProductCards";
+import MobileTableCard from "@/components/MobileTableCard";
 
 type Props = {
   params: { productId: string };
@@ -27,9 +29,9 @@ export default function ProductPage({ params }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-5 max-w-[1440px]">
-      <div className="flex justify-between">
-        <div className="flex gap-6">
+    <div className="flex flex-col gap-5">
+      <div className="flex flex-col-reverse justify-between gap-4 md:flex-row">
+        <div className="flex flex-col gap-6 md:flex-row">
           <p>{product?.name}</p> {""}
           <p>
             Date Added {""}
@@ -50,7 +52,13 @@ export default function ProductPage({ params }: Props) {
           {product?.status === "Published" ? "Unpublish" : "Publish"}
         </Button>
       </div>
+
       <ProductCards product={product} orders={orders} />
+      <div className="sm:hidden h-screen ">
+        <p>Orders List</p>
+        <MobileTableCard data={orders} columns={mobileColumns} />
+      </div>
+
       <DataTable
         columns={columns}
         data={orders}
@@ -86,6 +94,7 @@ function useProductData(productId: string) {
     if (product) {
       setProduct(product);
       const orders = await getOrdersByProductId(product?.id);
+
       setOrders(orders);
     }
   };

@@ -15,6 +15,42 @@ import Image from "next/image";
 // import DeleteModal from "./DeleteModal";
 import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { getStatusClassName } from "@/utils/functions";
+import { Product } from "@/types/types";
+
+interface Column<T> {
+  header: string;
+  accessor: keyof T | ((data: T) => React.ReactNode);
+  render?: (data: string) => React.ReactNode;
+}
+
+export const mobileColumns: Column<Product>[] = [
+  { header: "Product", accessor: (product: Product) => product?.name },
+  { header: "Category", accessor: "category" },
+  {
+    header: "Selling Price",
+    accessor: (product: Product) =>
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "EUR",
+      }).format(product.sellingPrice),
+  },
+  { header: "In-Stock", accessor: "stock" },
+  {
+    header: "Total Value",
+    accessor: (product: Product) =>
+      new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "EUR",
+      }).format(product.stock * product.sellingPrice),
+  },
+  {
+    header: "Status",
+    accessor: "status",
+    render: (status: string) => {
+      return <Badge className={getStatusClassName(status)}>{status}</Badge>;
+    },
+  },
+];
 
 //TODO: uncomment deleteModal
 

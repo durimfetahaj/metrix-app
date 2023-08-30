@@ -14,9 +14,13 @@ type Props = {
 export function ProductCards({ product, orders }: Props) {
   return (
     <>
-      <div className="flex gap-5">
-        <DisplayImage src={product?.images[0]} alt={product?.name} />
-        <div className="grid grid-cols-3 gap-5 w-full">
+      <div className="flex flex-col gap-5 md:flex-row">
+        <DisplayImage
+          src={product?.images[0]}
+          alt={product?.name}
+          className="w-full md:w-1/6"
+        />
+        <div className="grid grid-cols-1 gap-5 w-full md:grid-cols-3">
           <SummaryCard
             data={[
               {
@@ -57,7 +61,7 @@ export function ProductCards({ product, orders }: Props) {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <SummaryCard
           data={[
             {

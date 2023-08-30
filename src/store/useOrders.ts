@@ -40,10 +40,11 @@ const useOrders = create<ordersStoreState>((set, get) => ({
     const orders: Order[] = [];
     ordersSnapshot.forEach((doc) => {
       const order = doc.data() as Order;
-      const matchingProduct = order?.items?.find(
+      const matchingItems = order?.items?.filter(
         (item) => item.productId === productId
       );
-      if (matchingProduct) {
+      if (matchingItems.length > 0) {
+        order.items = matchingItems; // Replace items with matching items
         orders.push(order);
       }
     });

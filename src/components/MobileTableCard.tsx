@@ -22,21 +22,25 @@ const MobileTableCard = <T extends Record<string, any>>({
 }: MobileOrderCardProps<T>) => {
   return (
     <div className="bg-white p-4 rounded-md ">
-      {data?.map((item, index) => (
-        <Link href={href ? `/dashboard/${href}/${item?.id}` : ""} key={index}>
-          {columns.map((column, columnIndex) => (
-            <div key={columnIndex}>
-              <strong>{column.header}:</strong>{" "}
-              {typeof column.accessor === "function"
-                ? column.accessor(item)
-                : column.render
-                ? column.render(item[column.accessor as keyof T])
-                : item[column.accessor as keyof T]}
-            </div>
-          ))}
-          <hr className="my-4" />
-        </Link>
-      ))}
+      {data?.length > 0 ? (
+        data.map((item, index) => (
+          <Link href={href ? `/dashboard/${href}/${item?.id}` : ""} key={index}>
+            {columns.map((column, columnIndex) => (
+              <div key={columnIndex}>
+                <strong>{column.header}:</strong>{" "}
+                {typeof column.accessor === "function"
+                  ? column.accessor(item)
+                  : column.render
+                  ? column.render(item[column.accessor as keyof T])
+                  : item[column.accessor as keyof T]}
+              </div>
+            ))}
+            <hr className="my-4" />
+          </Link>
+        ))
+      ) : (
+        <p className="text-center">No orders</p>
+      )}
     </div>
   );
 };

@@ -4,9 +4,10 @@ type Props = {
 };
 
 function PageHead({ text, children }: Props) {
+  console.log("text", text);
   return (
-    <div className="flex justify-between mb-5">
-      <p className="">{text}</p>
+    <div className="flex justify-end md:justify-between md:mb-5">
+      <p className="text-sm hidden md:block">{text}</p>
       {children}
     </div>
   );

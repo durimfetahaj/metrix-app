@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { FC } from "react";
 import { columns, mobileColumns } from "./columns";
 import { OrdersCards } from "@/components/Cards";
-import MobileOrderCard from "@/components/MobileTableCard";
+import MobileTableCard from "@/components/MobileTableCard";
 
 async function getData(): Promise<Order[]> {
   const orders: Order[] = [];
@@ -29,7 +29,7 @@ const page: FC = async () => {
       <OrdersCards orders={orders} />
       <div className="sm:hidden h-screen ">
         <p>Orders List</p>
-        <MobileOrderCard data={orders} columns={mobileColumns} href="orders" />
+        <MobileTableCard data={orders} columns={mobileColumns} href="orders" />
       </div>
       <DataTable
         columns={columns}

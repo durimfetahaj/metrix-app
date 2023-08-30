@@ -21,7 +21,7 @@ export default function Products({ products }: Props) {
   const activeProducts = getActiveProducts(products).length;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2  gap-4 max-w-6xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
       <SummaryCard
         data={[
           { title: "All Products", value: products?.length },
