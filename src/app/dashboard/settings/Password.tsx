@@ -48,11 +48,11 @@ function Password() {
     >
       {({ values, errors, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <div className="flex justify-end w-full mt-5 mb-16">
+          <div className="flex justify-end mt-5 mb-16">
             <Button type="submit">Update</Button>
           </div>
 
-          <div className="flex flex-col w-1/3">
+          <div className="flex flex-col lg:w-1/3">
             <Input
               type="password"
               name="currentPassword"

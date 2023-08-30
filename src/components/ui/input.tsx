@@ -44,7 +44,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {type === "password" && (
             <div
-              className="absolute top-1/2 transform -translate-y-[12px] right-3 cursor-pointer"
+              className="absolute top-1/2 transform -translate-y-[17px] right-3 cursor-pointer"
               onClick={handleTogglePassword}
             >
               {showPassword ? <EyeOff /> : <Eye />}

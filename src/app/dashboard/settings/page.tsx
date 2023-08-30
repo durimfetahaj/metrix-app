@@ -17,7 +17,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="bg-white px-9 py-4 rounded-xl max-w-[1440px] min-h-[700px]">
+    <div className="bg-white px-9 py-4 rounded-xl lg:min-h-[500px] max-w-screen-md">
       <Tabs defaultValue="account" tabs={tabs} />
     </div>
   );
