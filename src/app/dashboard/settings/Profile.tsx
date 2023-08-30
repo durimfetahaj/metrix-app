@@ -70,7 +70,7 @@ function ProfileContent() {
             <Button type="submit">Update</Button>
           </div>
           <div className="flex flex-col md:flex-row md:gap-20">
-            <div>
+            <div className="flex flex-col gap-5">
               <Input name="name" placeholder="Full Name" />
               <Input name="email" placeholder="E-mail" />
             </div>

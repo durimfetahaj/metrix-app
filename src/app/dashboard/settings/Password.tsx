@@ -52,7 +52,7 @@ function Password() {
             <Button type="submit">Update</Button>
           </div>
 
-          <div className="flex flex-col lg:w-1/3">
+          <div className="flex flex-col gap-5 lg:w-1/3">
             <Input
               type="password"
               name="currentPassword"

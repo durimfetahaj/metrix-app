@@ -63,7 +63,7 @@ function Page() {
               </Button>
             </PageHead>
             <div className="flex flex-col p-8 rounded-xl bg-white lg:flex-row lg:gap-10">
-              <div className="flex flex-col lg:w-1/2">
+              <div className="flex flex-col gap-5 lg:w-1/2">
                 <Input name="name" placeholder="Product Name" />
                 <Select
                   name="category"
@@ -77,7 +77,7 @@ function Page() {
                   ]}
                   placeholder="Product Category"
                 />
-                <div className="">
+                <div className="flex flex-col gap-5">
                   <Input
                     name="sellingPrice"
                     placeholder="Selling Price"

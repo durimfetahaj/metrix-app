@@ -79,7 +79,7 @@ const CustomersPage: FC = () => {
                 actionText="Add"
                 onSubmit={submitForm} // Pass Formik's submitForm function
               >
-                <div className="flex flex-col ">
+                <div className="flex flex-col gap-5">
                   <Input name="name" placeholder="Customer Name" />
                   <Input name="email" placeholder="Customer E-mail" />
                   <Input name="phone" placeholder="Customer Phone" />
