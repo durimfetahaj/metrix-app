@@ -55,11 +55,11 @@ function OrderCards({ order }: { order: Order }) {
         data={[
           {
             title: "Phone",
-            value: order?.customer.phone,
+            value: order?.customer?.phone,
           },
           {
             title: "Email",
-            value: order?.customer.email,
+            value: order?.customer?.email,
           },
         ]}
         icon={

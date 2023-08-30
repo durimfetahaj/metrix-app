@@ -56,7 +56,7 @@ export const columns: ColumnDef<OrderItem>[] = [
             width={50}
             alt={product?.name ? product.name : "no-image"}
             src={
-              product?.images
+              product?.images[0]
                 ? product.images[0]
                 : "/images/upload-img-fallback.png"
             }
@@ -93,14 +93,11 @@ export const columns: ColumnDef<OrderItem>[] = [
     accessorKey: "total",
     header: "Order Total",
     cell: ({ row }) => {
-      const sellingPrice = row?.original?.price
-        ? parseFloat(row?.original?.price.toString()) *
-          parseFloat(row?.original?.quantity.toString())
-        : 0;
+      const totalPrice = row?.original?.totalPrice;
       const total = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "EUR",
-      }).format(sellingPrice);
+      }).format(totalPrice);
 
       return <div>{total}</div>;
     },

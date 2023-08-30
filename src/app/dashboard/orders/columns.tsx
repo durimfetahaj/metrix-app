@@ -12,7 +12,11 @@ interface Column<T> {
 }
 
 export const mobileColumns: Column<Order>[] = [
-  { header: "Customer", accessor: (order: Order) => order.customer.name },
+  {
+    header: "Customer",
+    accessor: (order: Order) =>
+      order?.customer?.name ? order?.customer?.name : "N/A",
+  },
   {
     header: "Order Date",
     accessor: (order: Order) => timestampToDate(order.createdAt),
@@ -33,13 +37,12 @@ export const columns: ColumnDef<any>[] = [
   {
     accessorKey: "name",
     header: "Customer Name",
-    accessorFn: (order) => order?.customer?.name,
     cell: ({ row }) => {
       const order = row.original;
       return (
         <div className="flex">
           <Link href={`/dashboard/orders/${order?.id}`} className="w-full">
-            {order?.customer?.name}
+            {order?.customer?.name ? order?.customer?.name : "N/A"}
           </Link>
         </div>
       );
