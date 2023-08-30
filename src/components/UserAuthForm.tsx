@@ -19,14 +19,14 @@ function UserAuthForm({
   submitText,
 }: Props) {
   return (
-    <div className="w-[400px] rounded-xl py-10 px-8  bg-white">
+    <div className="w-full h-full  py-10 px-8 bg-white lg:w-[500px] lg:h-auto lg:rounded-xl">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         {({ handleSubmit }) => (
-          <form onSubmit={handleSubmit} className="h-full pb-10">
+          <form onSubmit={handleSubmit} className="lg:h-full">
             {children}
             <Button
               type="submit"

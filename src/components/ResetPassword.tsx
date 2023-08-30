@@ -57,14 +57,14 @@ function ResetPasword() {
             Enter your email to reset your password
           </p>
         </div>
-        <div className="flex flex-col w-full text-right">
+        <div className="flex flex-col w-full mb-10 text-right">
           <Input name="email" placeholder="E-mail" />
-        </div>
-        <div className="flex items-center justify-center gap-1 my-10 text-sm">
-          <p className="text-brand-black-30">Remember your password?</p>
-          <Link href="/login" className=" text-brand-primary-100">
-            Log In
-          </Link>
+          <div className="flex items-end justify-end gap-1 text-sm lg:my-5">
+            <p className="text-brand-black-30">Remember your password?</p>
+            <Link href="/login" className=" text-brand-primary-100">
+              Log In
+            </Link>
+          </div>
         </div>
       </div>
     </UserAuthForm>

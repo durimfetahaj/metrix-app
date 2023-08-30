@@ -64,11 +64,11 @@ function Signup() {
           </p>
           <p className="text-brand-black-30">Create your free account</p>
         </div>
-        <div className="flex flex-col w-full text-right">
+        <div className="flex flex-col gap-5 mb-10 w-full text-right">
           <Input name="fullName" placeholder="Full Name" />
           <Input name="email" placeholder="E-mail" />
           <Input name="password" placeholder="Password" type="password" />
-          <div className="flex items-center justify-center gap-1 my-10 text-sm">
+          <div className="flex items-center justify-end gap-1 text-sm mb-5">
             <p className="text-brand-black-30">Already have an account?</p>
             <Link href="/login" className=" text-brand-primary-100">
               Sign In
