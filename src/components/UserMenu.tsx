@@ -21,12 +21,17 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
+import { usePathname } from "next/navigation";
 
 type Props = {
   user: User;
 };
 
 const User = ({ user }: Props) => {
+  const currentPage = usePathname();
+  const isDashboardPage = currentPage.startsWith("/dashboard");
+  const menuItem = isDashboardPage ? "Home" : "Dashboard";
+
   return (
     <AlertDialog>
       <DropdownMenu>
@@ -42,6 +47,15 @@ const User = ({ user }: Props) => {
           <DropdownMenuItem>
             <Link href="/dashboard/settings" className="w-full">
               Profile
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link
+              href={isDashboardPage ? "/" : "/dashboard"}
+              className="w-full"
+            >
+              {/* Make first letter uppercase */}
+              {menuItem}
             </Link>
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>

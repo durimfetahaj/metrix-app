@@ -14,6 +14,7 @@ import {
   Eye,
   EyeOff,
   X,
+  Search,
 } from "lucide-react";
 
 export const Icons = {
@@ -39,6 +40,24 @@ export const Icons = {
         d="M32.6749 5.00205C44.0746 5.29207 53.6557 13.4895 55.4999 24.5307L55.4823 24.6122L55.432 24.7307L55.439 25.0559C55.4129 25.4868 55.2465 25.9014 54.9598 26.2362C54.6612 26.585 54.2532 26.8226 53.8039 26.9148L53.5299 26.9524L34.3279 28.1965C33.6892 28.2595 33.0533 28.0536 32.5783 27.6299C32.1825 27.2768 31.9294 26.8002 31.8579 26.2867L30.5691 7.11266C30.5466 7.04782 30.5466 6.97754 30.5691 6.9127C30.5867 6.38418 30.8193 5.8846 31.215 5.52557C31.6107 5.16655 32.1365 4.978 32.6749 5.00205Z"
         fill="#FFCC91"
       />
+    </svg>
+  ),
+  search: (props: LucideProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#e9e9f1"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      className="lucide lucide-search"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
     </svg>
   ),
   CrossIcon: (props: LucideProps) => <X {...props} />,
