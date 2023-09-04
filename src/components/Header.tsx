@@ -16,7 +16,7 @@ function Header() {
   const pageTitle = getTitle(usePathname());
 
   return (
-    <div className="flex h-20 items-center justify-between px-2 md:px-4 py-4 ">
+    <div className="flex  items-center justify-between px-2 md:px-4 py-4 bg-white mb-4">
       {pageTitle ? (
         <p>{pageTitle}</p>
       ) : (
@@ -26,7 +26,7 @@ function Header() {
               <Icons.logo />
             </Link>
 
-            <ul className="flex gap-4 text-xs">
+            <ul className="flex gap-4">
               <li>
                 <Link href="/search">All</Link>
               </li>

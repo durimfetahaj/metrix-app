@@ -20,10 +20,10 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.className}>
-      <body>
+      <body className="bg-brand-background selection:bg-brand-secondary-100">
         <Provider>
           <Header />
-          <main className="bg-brand-background">{children}</main>
+          <main>{children}</main>
           <Footer />
         </Provider>
         <Toaster />
