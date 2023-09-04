@@ -1,12 +1,32 @@
-import Header from "@/components/Header";
+import Loader from "@/components/Loader";
+import { ThreeItemGrid } from "@/components/grid/three-items";
+import Footer from "@/components/layout/footer";
+import { Suspense } from "react";
 
-export default function Home() {
+export const runtime = "edge";
+
+export const metadata = {
+  description:
+    "High-performance ecommerce store built with Next.js, Vercel, and Shopify.",
+  openGraph: {
+    type: "website",
+  },
+};
+
+export default async function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10  bg-red-100">
-      <Header isHomepage />
-      <section>
-        <h1>Banner</h1>
-      </section>
-    </main>
+    <>
+      <Suspense
+        fallback={<p className="w-full h-screen text-center p-5">Loading...</p>}
+      >
+        <ThreeItemGrid />
+      </Suspense>
+      <Suspense>
+        {/* <Carousel /> */}
+        <Suspense>
+          <Footer />
+        </Suspense>
+      </Suspense>
+    </>
   );
 }
