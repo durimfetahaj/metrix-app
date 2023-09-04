@@ -14,12 +14,18 @@ import {
   Eye,
   EyeOff,
   X,
-  Search,
+  ShoppingCart,
 } from "lucide-react";
 
 export const Icons = {
   user: User,
   PlusCircleIcon: (props: LucideProps) => <PlusCircleIcon {...props} />,
+  Cart: (props: LucideProps) => (
+    <ShoppingCart
+      className="transition-all ease-in-out hover:scale-110 "
+      {...props}
+    />
+  ),
   Eye: (props: LucideProps) => <Eye {...props} />,
   EyeOff: (props: LucideProps) => <EyeOff {...props} />,
   logo: (props: LucideProps) => (

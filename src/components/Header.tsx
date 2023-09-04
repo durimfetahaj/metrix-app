@@ -16,17 +16,17 @@ function Header() {
   const pageTitle = getTitle(usePathname());
 
   return (
-    <div className="flex  items-center justify-between px-2 md:px-4 py-4 bg-white">
+    <div className="flex items-center gap-4 justify-between px-2 md:px-4 py-4 bg-white ">
       {pageTitle ? (
         <p>{pageTitle}</p>
       ) : (
-        <div className="flex items-center w-full">
+        <div className="flex justify-between items-center w-full">
           <div className="flex items-center gap-4">
             <Link href="/">
               <Icons.logo />
             </Link>
 
-            <ul className="flex gap-4">
+            <ul className="hidden md:flex gap-4">
               <li>
                 <Link href="/search">All</Link>
               </li>
@@ -41,8 +41,14 @@ function Header() {
           <div className="hidden flex-1 md:flex justify-center">
             <Search />
           </div>
+          <button onClick={() => alert("Cart opened")}>
+            <div className="flex h-11 w-11 items-center justify-center rounded-md border">
+              <Icons.Cart />
+            </div>
+          </button>
         </div>
       )}
+
       {status === "authenticated" ? (
         <div>
           <UserMenu user={session?.user} />
