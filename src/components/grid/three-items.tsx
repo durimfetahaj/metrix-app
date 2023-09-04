@@ -1,15 +1,11 @@
 import Link from "next/link";
-import { GridTileImage } from "./tile";
 import { Product } from "@/types/types";
-import { getBestsellers } from "@/firebase";
-import { Suspense } from "react";
-import { wait } from "@/utils/functions";
 import { DisplayImage } from "../DisplayImage";
+import { getBestsellers } from "@/firebase/functions";
 
 function ThreeItemGridItem({
   item,
   size,
-  priority,
 }: {
   item: Product;
   size: "full" | "half";

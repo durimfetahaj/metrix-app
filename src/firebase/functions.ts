@@ -8,7 +8,6 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "./firebaseConfig";
-import { wait } from "@/utils/functions";
 
 export async function getBestsellers(): Promise<Product[]> {
   const bestSellers: Product[] = [];

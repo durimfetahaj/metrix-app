@@ -24,8 +24,8 @@ interface DisplayImageProps
     VariantProps<typeof displayImageVariants> {
   src: string;
   alt: string;
-  interactive: boolean;
-  label: {
+  interactive?: boolean;
+  label?: {
     position: "bottom" | "center";
     title: string;
     amount: string;
