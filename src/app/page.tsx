@@ -1,6 +1,4 @@
-import Loader from "@/components/Loader";
 import { ThreeItemGrid } from "@/components/grid/three-items";
-import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 
 export const runtime = "edge";
@@ -20,12 +18,6 @@ export default async function HomePage() {
         fallback={<p className="w-full h-screen text-center p-5">Loading...</p>}
       >
         <ThreeItemGrid />
-      </Suspense>
-      <Suspense>
-        {/* <Carousel /> */}
-        <Suspense>
-          <Footer />
-        </Suspense>
       </Suspense>
     </>
   );

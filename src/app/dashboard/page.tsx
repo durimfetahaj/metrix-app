@@ -56,17 +56,17 @@ const page: FC = async () => {
   ]);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 h-full">
       <DashboardCards
         customers={customers}
         orders={orders}
         inventory={inventory}
       />
       <div className="flex flex-col gap-5 md:flex-row">
-        <div className="h-full py-4 rounded-lg bg-white md:w-[70%] md:h-96">
+        <div className="py-4 hidden md:block rounded-lg bg-white md:w-[70%] md:h-96">
           <BarChartComponent data={aggregateSalesData(orders)} />
         </div>
-        <div className="md:w-[30%] h-screen">
+        <div className="md:w-[30%]">
           <RecentOrdersCard orders={GetRecentOrders(orders)} />
         </div>
       </div>
