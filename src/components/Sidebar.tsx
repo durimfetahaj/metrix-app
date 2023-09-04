@@ -54,9 +54,9 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="h-screen flex flex-col">
+    <nav className="bg-white flex flex-col">
       <div
-        className={`flex flex-col h-full  text-brand-black-50 py-8  ${sidebarWidth} ${
+        className={` flex flex-col text-brand-black-50 py-8  ${sidebarWidth} ${
           isOpen ? `items-start px-8` : `items-center px-4`
         } ease-in duration-300 `}
       >
@@ -90,7 +90,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <div className="h-full w-full flex items-center justify-end md:items-end md:mb-5 pr-5">
+      <div className="h-full flex items-center justify-end pr-2">
         {isOpen ? (
           <Icons.sidebar.close
             onClick={toggleSidebar}
