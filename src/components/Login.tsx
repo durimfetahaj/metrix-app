@@ -7,7 +7,7 @@ import { FormikValues } from "formik";
 import { Input } from "@/components/ui/input";
 import { Icons } from "./Icons";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useToast } from "./ui/use-toast";
 import { signIn } from "next-auth/react";
 import Loader from "./Loader";
@@ -16,6 +16,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  const pathName = usePathname();
 
   const handleSubmit = async (values: FormikValues) => {
     setLoading(true);
@@ -26,7 +27,7 @@ function Login() {
         redirect: false,
       }).then((response) => {
         if (!response?.error) {
-          router.push("/dashboard");
+          router.push("/");
         } else {
           toast({
             title: "Invalid Credentials",
