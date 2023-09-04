@@ -16,7 +16,7 @@ function Header() {
   const pageTitle = getTitle(usePathname());
 
   return (
-    <div className="flex  items-center justify-between px-2 md:px-4 py-4 bg-white mb-4">
+    <div className="flex  items-center justify-between px-2 md:px-4 py-4 bg-white">
       {pageTitle ? (
         <p>{pageTitle}</p>
       ) : (

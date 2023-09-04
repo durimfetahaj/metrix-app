@@ -4,7 +4,6 @@ import { Toaster } from "@/components/ui/toaster";
 import Provider from "@/components/Provider";
 import Header from "@/components/Header";
 import Footer from "@/components/layout/footer";
-import { Suspense } from "react";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
