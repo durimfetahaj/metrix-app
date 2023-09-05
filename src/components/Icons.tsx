@@ -22,7 +22,7 @@ export const Icons = {
   PlusCircleIcon: (props: LucideProps) => <PlusCircleIcon {...props} />,
   Cart: (props: LucideProps) => (
     <ShoppingCart
-      className="transition-all ease-in-out hover:scale-110 "
+      className="h-5 w-5 transition-all ease-in-out hover:scale-110 "
       {...props}
     />
   ),
