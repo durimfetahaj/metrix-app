@@ -20,12 +20,7 @@ import {
 export const Icons = {
   user: User,
   PlusCircleIcon: (props: LucideProps) => <PlusCircleIcon {...props} />,
-  Cart: (props: LucideProps) => (
-    <ShoppingCart
-      className="h-5 w-5 transition-all ease-in-out hover:scale-110 "
-      {...props}
-    />
-  ),
+  Cart: (props: LucideProps) => <ShoppingCart {...props} />,
   Eye: (props: LucideProps) => <Eye {...props} />,
   EyeOff: (props: LucideProps) => <EyeOff {...props} />,
   logo: (props: LucideProps) => (

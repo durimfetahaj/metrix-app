@@ -10,6 +10,7 @@ import { getTitle } from "@/utils/functions";
 import UserMenu from "./UserMenu";
 import Link from "next/link";
 import Search from "./Search";
+import Cart from "./cart";
 
 function Header() {
   const { status, data: session } = useSession();
@@ -41,11 +42,7 @@ function Header() {
           <div className="hidden flex-1 md:flex justify-center">
             <Search />
           </div>
-          <button onClick={() => alert("Cart opened")}>
-            <div className="flex h-11 w-11 items-center justify-center rounded-md border">
-              <Icons.Cart />
-            </div>
-          </button>
+          <Cart />
         </div>
       )}
 
