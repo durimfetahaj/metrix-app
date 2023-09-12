@@ -1,5 +1,3 @@
-"use client";
-
 import { ThreeItemGrid } from "@/components/grid/three-items";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -14,12 +12,6 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push("/dashboard");
-  }, [router]);
-
   // return (
   <>
     {/* <Suspense
