@@ -23,7 +23,7 @@ export default async function RootLayout({
         <Provider>
           <Header />
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </Provider>
         <Toaster />
       </body>

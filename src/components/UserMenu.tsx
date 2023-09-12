@@ -49,15 +49,14 @@ const User = ({ user }: Props) => {
               Profile
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link
+          {/* <DropdownMenuItem> */}
+          {/* <Link
               href={isDashboardPage ? "/" : "/dashboard"}
               className="w-full"
             >
-              {/* Make first letter uppercase */}
               {menuItem}
-            </Link>
-          </DropdownMenuItem>
+            </Link> */}
+          {/* </DropdownMenuItem> */}
           <AlertDialogTrigger asChild>
             <DropdownMenuItem>Log out</DropdownMenuItem>
           </AlertDialogTrigger>
