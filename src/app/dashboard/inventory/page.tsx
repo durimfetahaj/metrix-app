@@ -18,7 +18,7 @@ export default function InventoryPage() {
 
   useEffect(() => {
     get();
-  }, []);
+  }, [get]);
 
   if (loading || !products) {
     return <Loader variant="form" />;

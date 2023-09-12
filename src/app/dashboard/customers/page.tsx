@@ -28,7 +28,7 @@ const CustomersPage: FC = () => {
   useEffect(() => {
     getCustomers();
     getOrders();
-  }, []);
+  }, [getCustomers, getCustomers, getOrders]);
 
   const handleSubmit = async (values: FormikValues, formik: any) => {
     try {

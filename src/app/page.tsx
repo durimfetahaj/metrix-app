@@ -18,7 +18,7 @@ export default async function HomePage() {
 
   useEffect(() => {
     router.push("/dashboard");
-  }, []);
+  }, [router]);
 
   // return (
   <>

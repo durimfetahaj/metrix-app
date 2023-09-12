@@ -22,7 +22,7 @@ export default function ProductPage({ params }: Props) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   if (loading || !product) {
     return <Loader variant="form" />;
