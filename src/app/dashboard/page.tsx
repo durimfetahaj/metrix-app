@@ -6,6 +6,13 @@ import { GetRecentOrders, aggregateSalesData } from "@/utils/functions";
 import { collection, getDocs } from "firebase/firestore";
 import { FC } from "react";
 
+export const metadata = {
+  description: "High-performance e-commerce store built",
+  openGraph: {
+    type: "website",
+  },
+};
+
 async function getOrders(): Promise<Order[]> {
   const orders: Order[] = [];
 

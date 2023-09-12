@@ -31,8 +31,6 @@ function Header() {
       </div>
     );
   }
-
-  return <Loader />;
 }
 
 export default Header;
